@@ -34,27 +34,29 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Register</button>
+            <button type="submit" class="reg_button">Register</button>
         </form>
     </div>
 
     <script>
         $(document).ready(function () {
-            // Сохраняем ссылку на body
-            var body = $('body');
+            // Плавное появление контейнера домашней страницы
+            $(".reg_body").hide().fadeIn(700);
 
-            // Обработчик события для ухода со страницы
+            // Обработчик события для ухода со страницы с анимацией
             $("a:not([href*=javascript]):not([href*=\\#]):not(.fancybox):not([target]):not([data-fancybox])").click(function () {
-                // Скрываем body с плавным эффектом
-                body.fadeOut(300);
+                $('.reg_body').fadeOut();
+                let url = $(this).attr('href');
+                window.setTimeout(function () {
+                    window.location.href = url;
+                }, 500);
+                return false;
             });
 
-            // Обработчик события для появления на странице Register
-            $(window).on('load', function () {
-                // Плавно показываем body
-                body.fadeIn(400);
-            });
-        });
-</script>
+            $(document).on('click', 'a[href="#register"]', function () {
+                $('.reg_body').fadeIn();
+                return false;
+
+    </script>
 </body>
 </html>
