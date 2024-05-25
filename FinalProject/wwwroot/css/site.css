@@ -1,11 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 
-body {
+.home_body {
     margin-bottom: 60px;
-    background: linear-gradient(to bottom, rgb(68, 68, 133), white 100%), no-repeat center center fixed;
-    background-size: cover;
+    background: white; /* Начальное состояние: белый экран */
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh; /* Обеспечивает высоту экрана */
 }
-.container {
+
+.home_body::before {
+    content: '';
+    position: absolute;
+    top: -550%; /* Начальное положение: значительно выше верхней границы экрана */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgb(68, 68, 133), white 100%);
+    animation: backgroundSlideIn 2.3s forwards;
+    z-index: -1; /* Размещаем псевдоэлемент на задний план */
+}
+
+@keyframes backgroundSlideIn {
+    to {
+        top: 0; /* Конечное положение: занимает весь экран */
+    }
+}
+.home_container {
     margin-top: 150px; /* Отступ сверху */
     text-align: center;
     opacity: 0;
@@ -14,16 +34,6 @@ body {
     animation: fadeInUp 2.5s forwards;
 }
 
-.leaves {
-    position: absolute; /* Устанавливаем позицию листьев абсолютной */
-    top: 0; /* Размещаем листья в верхнем левом углу контейнера */
-    left: 0;
-    width: 50%;
-    height: 50%;
-    border-radius: 10%;
-    z-index: 1; /* Устанавливаем z-index выше, чем у других элементов в контейнере */
-}
-@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 
 @keyframes fadeInUp {
     to {
@@ -38,12 +48,12 @@ body {
     font-weight: bold;
 }
 
-.buttons {
+.home_buttons {
     margin-top: 20px;
     opacity: 65%;
 }
 
-.btn {
+.home_btn {
     background-color: black;
     color: white;
     padding: 10px 20px;
@@ -53,20 +63,102 @@ body {
     font-size: 1em;
 }
 
-    .btn:hover {
+    .home_btn:hover {
         background-color: #333;
     }
 
-.text1 {
+.home_text1 {
     font-family: 'Poiret One', cursive; /* Устанавливаем шрифт Poiret One для заголовков */
     font-size: 3em; /* Размер шрифта */
     color: white; /* Цвет текста */
+    opacity: 0; /* Начальное состояние: невидимость */
+    animation: fadeInText 1s forwards 2s; /* Анимация появления с задержкой 3 секунды */
 }
 
-.text2 {
-    margin-top: 115px;
-    
+@keyframes fadeInText {
+    to {
+        opacity: 1; /* Конечное состояние: полная видимость */
+    }
+}
+
+.home_text3 {
+    font-family: 'Poiret One', cursive; /* Устанавливаем шрифт Poiret One для заголовков */
+    font-size: 5em; /* Размер шрифта */
+    color: white; /* Цвет текста */
+    opacity: 0; /* Начальное состояние: невидимость */
+    animation: fadeInText3 0.7s forwards 3.5s; /* Анимация появления с задержкой 3 секунды */
+}
+
+@keyframes fadeInText3 {
+    to {
+        opacity: 1; /* Конечное состояние: полная видимость */
+    }
+}
+
+.home_text2 {
+    margin-top: 50px;
     font-family: 'Poiret One', cursive; /* Устанавливаем шрифт Poiret One для заголовков */
     font-size: 25px; /* Размер шрифта */
     color: black; /* Цвет текста */
 }
+
+
+
+
+
+
+
+
+
+
+.reg_body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.reg_container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+    .reg_container h1 {
+        text-align: center;
+    }
+
+.reg_form-group {
+    margin-bottom: 15px;
+}
+
+    .reg_form-group label {
+        display: block;
+        font-weight: bold;
+    }
+
+    .reg_form-group input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+.reg_button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+    .reg_button:hover {
+        background-color: #0056b3;
+    }

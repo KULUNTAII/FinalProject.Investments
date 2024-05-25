@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>@ViewData["Title"]</title>
+</head>
+<body class="reg_body">
+    <div class="reg_container">
+        <h1>Registration</h1>
+        <form class="reg_form">
+            <div class="form-group">
+                <label for="name">First Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="login">Username:</label>
+                <input type="text" id="login" name="login" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Сохраняем ссылку на body
+            var body = $('body');
+
+            // Обработчик события для ухода со страницы
+            $("a:not([href*=javascript]):not([href*=\\#]):not(.fancybox):not([target]):not([data-fancybox])").click(function () {
+                // Скрываем body с плавным эффектом
+                body.fadeOut(300);
+            });
+
+            // Обработчик события для появления на странице Register
+            $(window).on('load', function () {
+                // Плавно показываем body
+                body.fadeIn(400);
+            });
+        });
+</script>
+</body>
+</html>

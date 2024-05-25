@@ -7,22 +7,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
 
 </head>
 
-
-<div class="container">
+<body class="home_body">
+<div class="home_container">
 @* <img src="/css/14. Листва.jpg" alt="leaves" class="leaves"> *@
     <h1 class="welcome">Welcome to Invest KG</h1>
-    <h2 class="text1">Stop chasing your dream. Face it!</h2>
-    <h3 class="text2">Create. Invest. Engage.</h3>
-    <div class="buttons">
-        <button class="btn">Register</button>
-        <button class="btn">Login</button>
-    </div>
+    <h2 class="home_text1">Stop chasing your dream.</h2>
+        <h2 class="home_text3">Face it!</h2>
+    <h3 class="home_text2">Create. Invest. Engage.</h3>
+        <div class="home_buttons">
+            <a href="@Url.Action("Register", "Home")" class="home_btn">Register</a>
+            <a href="#" class="home_btn">Login</a>
+        </div>
 </div>
 
-    <div class="heart" style="margin: 0 auto; display: block;"></div>
-    
-     
+    <script>
+        $(document).ready(function () {
+            // Сохраняем ссылку на body
+            var body = $('body');
+
+            // Обработчик события для ухода со страницы
+            $("a:not([href*=javascript]):not([href*=\\#]):not(.fancybox):not([target]):not([data-fancybox])").click(function () {
+                // Скрываем body с плавным эффектом
+                body.fadeOut(700);
+            });
+
+            // Обработчик события для появления на странице Register
+            $(window).on('load', function () {
+                // Плавно показываем body
+                body.fadeIn(300);
+            });
+        });
+    </script>
+</body>
+
