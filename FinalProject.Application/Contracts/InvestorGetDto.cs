@@ -1,9 +1,8 @@
-﻿using FinalProject.Domain.Abstractions;
+﻿using FinalProject.Domain.Entities;
 using FinalProject.Domain.Enums;
-
-namespace FinalProject.Domain.Entities
+namespace FinalProject.Application.Contracts
 {
-    public class Investor : Entity
+    public class InvestorGetDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -12,8 +11,8 @@ namespace FinalProject.Domain.Entities
         public List<Project> InvestedProjects { get; set; }
         public List<int> Contacts { get; set; }
         public string Email { get; set; }
-        public required string Password { get; set; }
         public List<string> Links { get; set; }
         public string Country { get; set; }
+
     }
 }

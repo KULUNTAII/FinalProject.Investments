@@ -1,4 +1,4 @@
-﻿public enum Qualifications
+﻿public enum QualificationTypeEnum
 {
     ProjectManager = 1,
     Developer = 2,
