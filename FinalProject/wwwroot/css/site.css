@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 
 .home_body {
-    margin-bottom: 60px;
+  
     background: white; /* Начальное состояние: белый экран */
     position: relative;
     overflow: hidden;
@@ -26,7 +26,7 @@
     }
 }
 .home_container {
-    margin-top: 150px; /* Отступ сверху */
+    margin-top: 80px; /* Отступ сверху */
     text-align: center;
     opacity: 0;
     filter: blur(10px); /* Начальное состояние: размытость */
@@ -42,11 +42,7 @@
         transform: translateY(0); /* Конечная позиция */
     }
 }
-.welcome {
-    font-size: 6em;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-}
+
 
 .home_buttons {
     margin-top: 20px;
@@ -61,18 +57,36 @@
     border: none;
     cursor: pointer;
     font-size: 1em;
+    transition: transform 0.3s, background-color 0.3s; /* Плавный переход для изменения размера и цвета фона */
+    text-decoration: none; /* Убираем подчеркивание текста кнопки */
 }
 
     .home_btn:hover {
         background-color: #333;
+        color: white;
     }
+.home_text4 {
+    margin-top: 100px;
+    font-family: 'Poiret One', cursive; /* Устанавливаем шрифт Poiret One для заголовков */
+    font-size: 2em; /* Размер шрифта */
+    color: white; /* Цвет текста */
+    padding: 0px;
+}
+
+.welcome {
+    font-weight: bold;
+    font-size: 8em;
+    color: white;
+}
+
 
 .home_text1 {
+    margin-top: 40px;
     font-family: 'Poiret One', cursive; /* Устанавливаем шрифт Poiret One для заголовков */
-    font-size: 3em; /* Размер шрифта */
+    font-size: 2em; /* Размер шрифта */
     color: white; /* Цвет текста */
     opacity: 0; /* Начальное состояние: невидимость */
-    animation: fadeInText 1s forwards 2s; /* Анимация появления с задержкой 3 секунды */
+    animation: fadeInText 1s forwards 1s; /* Анимация появления с задержкой 3 секунды */
 }
 
 @keyframes fadeInText {
@@ -83,10 +97,10 @@
 
 .home_text3 {
     font-family: 'Poiret One', cursive; /* Устанавливаем шрифт Poiret One для заголовков */
-    font-size: 5em; /* Размер шрифта */
+    font-size: 4em; /* Размер шрифта */
     color: white; /* Цвет текста */
     opacity: 0; /* Начальное состояние: невидимость */
-    animation: fadeInText3 0.7s forwards 3.5s; /* Анимация появления с задержкой 3 секунды */
+    animation: fadeInText3 0.3s forwards 2.5s; /* Анимация появления с задержкой 3 секунды */
 }
 
 @keyframes fadeInText3 {
@@ -96,7 +110,7 @@
 }
 
 .home_text2 {
-    margin-top: 50px;
+    margin-top: 40px;
     font-family: 'Poiret One', cursive; /* Устанавливаем шрифт Poiret One для заголовков */
     font-size: 25px; /* Размер шрифта */
     color: black; /* Цвет текста */
@@ -111,54 +125,216 @@
 
 
 
+/* styles.css */
+
 .reg_body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    overflow: hidden; /* добавляем свойство overflow: hidden; чтобы убрать горизонтальный скролл, если он появляется */
+    position: relative; /* добавляем свойство position: relative; чтобы псевдоэлемент был относительно блока */
+    min-height: 100vh; /* добавляем свойство min-height: 100vh; чтобы блок занимал весь видимый экран */
+}
+
+    .reg_body::before {
+        content: '';
+        position: absolute;
+        top: -550%; /* Начальное положение: значительно выше верхней границы экрана */
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgb(68, 68, 133), white 100%);
+        animation: backgroundSlideIn 2.3s forwards;
+        z-index: -1; /* Размещаем псевдоэлемент на задний план */
+    }
+
+@keyframes backgroundSlideIn {
+    to {
+        top: 0; /* Конечное положение: занимает весь экран */
+    }
 }
 
 .reg_container {
-    background-color: white;
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: rgba(0, 0, 0, 0.1);
     padding: 20px;
-    border-radius: 5px;
+    color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Добавляем выравнивание текста по центру */
+    opacity: 0; /* Начальное состояние: невидимость */
+    filter: blur(10px); /* Начальное состояние: размытость */
+    transform: translateY(50px); /* Начальная позиция ниже */
+    animation: fadeInUp 1.5s forwards; /* Анимация появления */
+}
+
+@keyframes fadeInUp {
+    to {
+        filter: blur(0);
+        opacity: 1;
+        transform: translateY(0); /* Конечная позиция */
+    }
 }
 
     .reg_container h1 {
+        margin-top: 0;
+        font-size: 24px;
         text-align: center;
     }
 
-.reg_form-group {
+.reg_form {
+    margin-top: 20px;
+}
+
+.form-group {
     margin-bottom: 15px;
 }
 
-    .reg_form-group label {
+    .form-group label {
         display: block;
+        margin-bottom: 5px;
         font-weight: bold;
     }
 
-    .reg_form-group input {
+    .form-group input {
         width: 100%;
-        padding: 10px;
-        border-radius: 5px;
+        padding: 8px;
         border: 1px solid #ccc;
+        border-radius: 3px;
     }
 
 .reg_button {
+    opacity: 65%;
+    display: block;
     width: 100%;
     padding: 10px;
+    background-color: black; /* Изменяем цвет фона кнопки на черный */
+    color: #fff; /* Устанавливаем цвет текста кнопки на белый */
     border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
+    border-radius: 3px;
     cursor: pointer;
+    text-decoration: none;
 }
 
-    .reg_button:hover {
-        background-color: #0056b3;
+.reg_button:hover {
+    background-color: #333;
+    color: white;
+}
+
+
+
+
+
+
+.login_body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Добавляем свойство overflow: hidden; чтобы убрать горизонтальный скролл, если он появляется */
+    position: relative; /* Добавляем свойство position: relative; чтобы псевдоэлемент был относительно блока */
+    min-height: 100vh; /* Добавляем свойство min-height: 100vh; чтобы блок занимал весь видимый экран */
+}
+
+    .login_body::before {
+        content: '';
+        position: absolute;
+        top: -550%; /* Начальное положение: значительно выше верхней границы экрана */
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgb(68, 68, 133), white 100%);
+        animation: backgroundSlideIn 2.3s forwards;
+        z-index: -1; /* Размещаем псевдоэлемент на задний план */
+    }
+
+@keyframes backgroundSlideIn {
+    to {
+        top: 0; /* Конечное положение: занимает весь экран */
+    }
+}
+
+.login_container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Добавляем выравнивание текста по центру */
+    opacity: 0; /* Начальное состояние: невидимость */
+    filter: blur(10px); /* Начальное состояние: размытость */
+    transform: translateY(50px); /* Начальная позиция ниже */
+    animation: fadeInUp 1.5s forwards; /* Анимация появления */
+}
+
+@keyframes fadeInUp {
+    to {
+        filter: blur(0);
+        opacity: 1;
+        transform: translateY(0); /* Конечная позиция */
+    }
+}
+
+.login_submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: black; /* Изменяем цвет фона кнопки на черный */
+    color: #fff; /* Устанавливаем цвет текста кнопки на белый */
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.login_container {
+    max-width: 400px;
+    margin: 150px auto; /* Отступы сверху и снизу автоматически выравнят контейнер по центру экрана */
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Добавляем выравнивание текста по центру */
+    opacity: 0; /* Начальное состояние: невидимость */
+    filter: blur(10px); /* Начальное состояние: размытость */
+    transform: translateY(50px); /* Начальная позиция ниже */
+    animation: fadeInUp 1.5s forwards; /* Анимация появления */
+}
+.login_form {
+    margin-top: 20px;
+}
+
+.login_group {
+    margin-bottom: 15px;
+}
+
+    .login_group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .login_group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+.login_submit {
+    background-color: black;
+    color: white;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: transform 0.3s, background-color 0.3s; 
+    text-decoration: none; 
+}
+
+    .login_submit:hover {
+        background-color: #333;
+        color: white;
     }

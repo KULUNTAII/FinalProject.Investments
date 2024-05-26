@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\Home\Login.cshtml.css" />
     <None Remove="Views\Register\Register.cshtml.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Views\Home\Login.cshtml.css" />
   </ItemGroup>
 
   <ItemGroup>

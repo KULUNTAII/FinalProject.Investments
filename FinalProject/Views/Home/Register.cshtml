@@ -38,25 +38,11 @@
         </form>
     </div>
 
-    <script>
+    @* <script>
         $(document).ready(function () {
-            // Плавное появление контейнера домашней страницы
-            $(".reg_body").hide().fadeIn(700);
-
-            // Обработчик события для ухода со страницы с анимацией
-            $("a:not([href*=javascript]):not([href*=\\#]):not(.fancybox):not([target]):not([data-fancybox])").click(function () {
-                $('.reg_body').fadeOut();
-                let url = $(this).attr('href');
-                window.setTimeout(function () {
-                    window.location.href = url;
-                }, 500);
-                return false;
-            });
-
-            $(document).on('click', 'a[href="#register"]', function () {
-                $('.reg_body').fadeIn();
-                return false;
-
-    </script>
+            var body = $("body");
+            body.fadeIn(600);
+        });
+    </script> *@
 </body>
 </html>

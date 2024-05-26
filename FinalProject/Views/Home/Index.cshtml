@@ -14,27 +14,31 @@
 
 <body class="home_body">
     <div class="home_container">
-        <h1 class="welcome">Welcome to Invest KG</h1>
+        <h2 class="home_text4">Welcome to</h2>
+        <h1 class="welcome">INVEST KG</h1>
         <h2 class="home_text1">Stop chasing your dream.</h2>
         <h2 class="home_text3">Face it!</h2>
         <h3 class="home_text2">Create. Invest. Engage.</h3>
         <div class="home_buttons">
             <a href="@Url.Action("Register", "Home")" class="home_btn">Register</a>
-            <a href="#" class="home_btn">Login</a>
+            <a href="@Url.Action("Login", "Home")" class="home_btn">Login</a>
         </div>
     </div>
 
-    <script>
-            $(document).ready(function () {
-                $("a:not([href*=javascript]):not([href*=\\#]):not(.fancybox):not([target]):not([data-fancybox])").click(function () {
-                    $('body').fadeOut();
-                    let url = $(this).attr('href');
-                    window.setTimeout(function () {
-                        window.location.href = url;
-                    }, 500);
-                    return false;
-                });
+    @* <script>
+        $(document).ready(function () {
+            var body = $("body");
+            body.fadeIn(600);
+
+            $(document).on("click", "a:not([href^='#']):not([href^='tel']):not([href^='mailto'])", function (e) {
+                e.preventDefault();
+                $("body").fadeOut(600);
+                var self = this;
+                setTimeout(function () {
+                    window.location.href = $(self).attr("href");
+                }, 1000);
             });
-    </script>
+        });
+    </script> *@
 </body>
 </html>
