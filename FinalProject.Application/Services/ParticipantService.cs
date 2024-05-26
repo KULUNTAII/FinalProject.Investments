@@ -1,12 +1,58 @@
-﻿using System;
+﻿using FinalProject.Application.Services.Interfaces.UnitOfWork;
+using FinalProject.Domain.Repositories;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalProject.Application.Services
+public class ParticipantService : IParticipantService
 {
-    internal class ParticipantService
+    private readonly IParticipantRepository participantRepository;
+    private readonly IUnitOfWork unitOfWork;
+    private readonly IMapper mapper;
+
+    public ParticipantService(IParticipantRepository participantRepository, IUnitOfWork unitOfWork, IMapper mapper)
     {
+        this.participantRepository = participantRepository;
+        this.unitOfWork = unitOfWork;
+        this.mapper = mapper;
+    }
+
+    public async Task<ParticipantGetDto?> GetByIdAsync(int id)
+    {
+        var participant = await participantRepository.GetByIdAsync(id);
+
+        if (participant is null) return null;
+
+        var participantDto = mapper.Map<ParticipantGetDto>(participant);
+
+        return participantDto;
+    }
+
+    public async Task<List<ParticipantGetDto>> GetAllAsync()
+    {
+        var participants = await participantRepository.GetAllAsync();
+
+        var participantDtos = mapper.Map<List<ParticipantGetDto>>(participants);
+
+        return participantDtos;
+    }
+
+    public async Task CreateAsync(ParticipantCreateDto participantDto)
+    {
+        var participant = mapper.Map<Participant>(participantDto);
+
+        participantRepository.Add(participant);
+
+        await unitOfWork.SaveChangesAsync();
+    }
+
+    public async Task DeleteAsync(int id)
+    {
+        var participant = await participantRepository.GetByIdAsync(id);
+
+        if (participant is null) return;
+
+        participantRepository.Remove(participant);
+
+        await unitOfWork.SaveChangesAsync();
     }
 }

@@ -10,6 +10,5 @@ namespace FinalProject.Domain.Repositories
 {
     public interface IInvestorRepository : IRepository<Investor>
     {
-        Task<Investor> SortByCountry(string country);
-    }
+    };
 }

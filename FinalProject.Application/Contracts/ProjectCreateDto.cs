@@ -2,7 +2,7 @@
 
 namespace FinalProject.Application.Contracts
 {
-    internal class ProjectCreateDto
+    public class ProjectCreateDto
     {
         public string Name { get; set; }
         public ProjectCategories Category { get; set; }

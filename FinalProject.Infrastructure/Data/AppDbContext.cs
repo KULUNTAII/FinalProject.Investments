@@ -9,6 +9,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> opts) : DbContext(opts)
     public DbSet<Project> Projects => Set<Project>();
     public DbSet<Participant> Participants => Set<Participant>();
     public DbSet<QualificationType> QualificationTypes => Set<QualificationType>();
+    public DbSet<User> Users => Set<User>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -10,7 +10,6 @@ namespace FinalProject.Application.Contracts
         public InvestorType Type { get; set; }
         public List<Project> InvestedProjects { get; set; }
         public List<int> Contacts { get; set; }
-        public string Email { get; set; }
         public List<string> Links { get; set; }
         public string Country { get; set; }
 

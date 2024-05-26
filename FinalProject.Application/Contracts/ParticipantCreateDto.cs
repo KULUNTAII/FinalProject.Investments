@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Application.Contracts
 {
-    internal class ParticipantCreateDto
+    public class ParticipantCreateDto
     {
         public required string Name { get; set; }
         public required string LastName { get; set; }
@@ -18,8 +18,6 @@ namespace FinalProject.Application.Contracts
         public List<string> Awards { get; set; }
         public Skills Skills { get; set; }
         public Project Projects { get; set; }
-        public required string Email { get; set; }
-        public int PhoneNumber { get; set; }
         public List<string> Links { get; set; }
         public string Country { get;set; }
     }

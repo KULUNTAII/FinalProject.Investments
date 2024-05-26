@@ -10,6 +10,5 @@ namespace FinalProject.Domain.Repositories
 {
     public interface IParticipantRepository : IRepository<Participant>
     {
-        Task<Participant> Follow(int praticipantId, int followerId);
-    }
+    };
 }

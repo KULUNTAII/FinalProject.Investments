@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Application.Contracts
 {
-    internal class ParticipantGetDto
+    public class ParticipantGetDto
     {
         public Guid Id { get; set; }
         public required string Name { get; set; }
@@ -22,7 +22,6 @@ namespace FinalProject.Application.Contracts
 
         [Required]
         [EmailAddress]
-        public required string Email { get; set; }
         public int PhoneNumber { get; set; }
         public List<string> Links { get; set; }
         public string Country { get; set; }

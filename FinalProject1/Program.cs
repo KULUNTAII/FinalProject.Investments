@@ -15,6 +15,12 @@ var app = builder.Build();
 // Add services to the container.
 app.UseMiddleware<GlobalExceptionHandling>();
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 app.UseStaticFiles();
 
 app.Use((HttpContext context, RequestDelegate next) =>
@@ -33,16 +39,4 @@ if (dbContext.Database.GetPendingMigrations().Any())
     dbContext.Database.Migrate();
 }
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
 app.Run();

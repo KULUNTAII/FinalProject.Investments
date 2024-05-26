@@ -10,9 +10,5 @@ namespace FinalProject.Domain.Repositories
 {
     public interface IProjectRepository : IRepository<Project>
     {
-        Task<Project> FindByNameAsync(string name);
-        Task<Project> Report(string report);
-        Task<Project> Comment(string comment);
-        Task<Project> AddToFavorites(string id);
-    }
+    };
 }

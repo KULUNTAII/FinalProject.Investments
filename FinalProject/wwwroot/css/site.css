@@ -86,7 +86,7 @@
     font-size: 2em; /* Размер шрифта */
     color: white; /* Цвет текста */
     opacity: 0; /* Начальное состояние: невидимость */
-    animation: fadeInText 1s forwards 1s; /* Анимация появления с задержкой 3 секунды */
+    animation: fadeInText 1s forwards 1.8s; /* Анимация появления с задержкой 3 секунды */
 }
 
 @keyframes fadeInText {
@@ -100,7 +100,7 @@
     font-size: 4em; /* Размер шрифта */
     color: white; /* Цвет текста */
     opacity: 0; /* Начальное состояние: невидимость */
-    animation: fadeInText3 0.3s forwards 2.5s; /* Анимация появления с задержкой 3 секунды */
+    animation: fadeInText3 0.5s forwards 3.3s; /* Анимация появления с задержкой 3 секунды */
 }
 
 @keyframes fadeInText3 {

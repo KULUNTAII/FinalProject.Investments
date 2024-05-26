@@ -1,24 +1,23 @@
-﻿using FinalProject.Application.Services.Interfaces.UnitOfWork;
-using FinalProject.Infrastructure.Data;
-using Microsoft.Extensions.Configuration;
+﻿using FinalProject.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
-using FinalProject.Infrastructure.Data.Repositories;
-using Microsoft.EntityFrameworkCore;
-using FinalProject.Domain.Repositories;
-using System;
-using FinalProject.Application.Services;
+using System.Reflection;
 
 namespace FinalProject.Application.Extensions;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructure(
-        this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddApplication(
+        this IServiceCollection services)
     {
+        services.AddSingleton<IPasswordManager, PasswordManager>();
+        services.AddTransient<IUserService, UserService>();
+
 
         services.AddScoped<IInvestorService, InvestorService>();
         services.AddScoped<IParticipantService, ParticipantService>();
         services.AddScoped<IProjectService, ProjectService>();
+
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         return services;
     }

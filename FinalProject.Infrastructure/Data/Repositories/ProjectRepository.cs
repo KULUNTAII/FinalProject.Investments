@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace FinalProject.Infrastructure.Data.Repositories
 {
     public class ProjectRepository(AppDbContext dbContext)
-    : BaseRepository<Investor>(dbContext), IProjectRepository
+    : BaseRepository<Project>(dbContext), IProjectRepository
     {
     };
 }
