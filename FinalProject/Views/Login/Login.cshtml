@@ -1,21 +1,19 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Login";
 }
 
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="styles.css">
 </head>
-
-<body class="home_body">
-    <header class="home_header">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="home_container-fluid">
+<body class="login_body">
+    <header class="login_header">
+        <nav class="login navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Invest KG</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -37,32 +35,19 @@
             </div>
         </nav>
     </header>
-    <div class="home_container">
-        <h2 class="home_text4">Welcome to</h2>
-        <h1 class="welcome">INVEST KG</h1>
-        <h2 class="home_text1">Stop chasing your dream.</h2>
-        <h2 class="home_text3">Face it!</h2>
-        <h3 class="home_text2">Create. Invest. Engage.</h3>
-        <div class="home_buttons">
-            <a href="@Url.Action("Register", "Register")" class="home_btn">Register</a>
-            <a href="@Url.Action("Login", "Login")" class="home_btn">Login</a>
-        </div>
+    <div class="login_container">
+        <h1>Login</h1>
+        <form class="login_form">
+            <div class="login_group">
+                <label for="login_username">Username:</label>
+                <input type="text" id="login_username" name="login_username" required>
+            </div>
+            <div class="login_group">
+                <label for="login_password">Password:</label>
+                <input type="password" id="login_password" name="login_password" required>
+            </div>
+            <button type="submit" class="login_submit">Login</button>
+        </form>
     </div>
-
-    @* <script>
-        $(document).ready(function () {
-            var body = $("body");
-            body.fadeIn(600);
-
-            $(document).on("click", "a:not([href^='#']):not([href^='tel']):not([href^='mailto'])", function (e) {
-                e.preventDefault();
-                $("body").fadeOut(600);
-                var self = this;
-                setTimeout(function () {
-                    window.location.href = $(self).attr("href");
-                }, 1000);
-            });
-        });
-    </script> *@
 </body>
 </html>

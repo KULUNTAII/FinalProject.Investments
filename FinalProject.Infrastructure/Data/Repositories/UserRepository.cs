@@ -1,21 +1,9 @@
-﻿
-using FinalProject.Domain.Entities;
+﻿using FinalProject.Domain.Entities;
 using FinalProject.Domain.Repositories;
-using System.Data.Entity;
+using FinalProject.Infrastructure.Data.Repositories.Abstractions;
+using System.Linq.Expressions;
 
-namespace FinalProject.Infrastructure.Data.Repositories;
-
-public class UserRepository(AppDbContext dbContext) : IUserRepository
-{
-    public void Add(User user)
+public class UserRepository(AppDbContext dbContext)
+    : BaseRepository<User>(dbContext), IUserRepository
     {
-        dbContext.Users.Add(user);
-    }
-
-    public Task<User?> GetByLoginAsync(string login)
-    {
-        return dbContext.Users
-            .AsNoTracking()
-            .FirstOrDefaultAsync(u => u.Login == login);
-    }
-}
+    };

@@ -1,16 +1,9 @@
-﻿using SpotiPie.Application.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FinalProject.Application.Services.Interfaces
+﻿namespace FinalProject.Controllers
 {
     public interface IUserService
     {
-        public Task<UserGetDto> SignUpAsync(UserCredentialsDto userDto);
-        public Task<UserGetDto?> GetByLoginAsync(UserCredentialsDto userDto);
+        Task<List<UserGetDto>> GetAllAsync();
+        Task<User> CreateUserAsync(UserCreateDto userDto);
+        Task<User> GetUserByIdAsync(string userId);
     }
-
 }

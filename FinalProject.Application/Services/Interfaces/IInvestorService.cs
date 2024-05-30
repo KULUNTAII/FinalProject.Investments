@@ -2,7 +2,7 @@
 {
     public Task<InvestorGetDto?> GetByIdAsync(int id);
     public Task<List<InvestorGetDto>> GetAllAsync();
-    public Task CreateAsync(InvestorCreateDto artistDto);
+    Task CreateAsync(InvestorCreateDto investorDto);
     public Task DeleteAsync(int id);
     //public Task<bool> AddFollowerAsync(int id);
 }

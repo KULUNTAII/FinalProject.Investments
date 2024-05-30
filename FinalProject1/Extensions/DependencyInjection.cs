@@ -5,7 +5,10 @@ using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
 using System.Text;
 using FinalProject.Middleware;
-using FinalProject.Services;
+using FinalProject.Application.Services;
+using ExamProject1.Services;
+using FinalProject.Controllers;
+using FinalProject.Application.Services.Interfaces;
 
 namespace FinalProject.Extensions;
 
@@ -87,8 +90,11 @@ public static class DependencyInjection
         services.AddScoped<GlobalExceptionHandling>();
 
         // Сервисы
-        services.AddTransient<IAuthService, AuthService>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
+        // Регистрируем сервис пользователя и другие службы
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IAuthService, AuthService>();
         return services;
     }
 }

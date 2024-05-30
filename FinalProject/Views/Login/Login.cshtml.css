@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FinalProject.MVC.Views.Home
+namespace FinalProject.MVC.Views.NewFolder
 {
     public class LoginModel : PageModel
     {

@@ -1,7 +1,17 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('site.css');
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Poiret One', cursive;
+}
+.home_header {
+    opacity: 0;
+}
+
 
 .home_body {
-  
     background: white; /* Начальное состояние: белый экран */
     position: relative;
     overflow: hidden;
@@ -26,7 +36,6 @@
     }
 }
 .home_container {
-    margin-top: 80px; /* Отступ сверху */
     text-align: center;
     opacity: 0;
     filter: blur(10px); /* Начальное состояние: размытость */
@@ -70,10 +79,10 @@
     font-family: 'Poiret One', cursive; /* Устанавливаем шрифт Poiret One для заголовков */
     font-size: 2em; /* Размер шрифта */
     color: white; /* Цвет текста */
-    padding: 0px;
 }
 
 .welcome {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
     font-size: 8em;
     color: white;
@@ -81,7 +90,7 @@
 
 
 .home_text1 {
-    margin-top: 40px;
+    margin-top: 10px;
     font-family: 'Poiret One', cursive; /* Устанавливаем шрифт Poiret One для заголовков */
     font-size: 2em; /* Размер шрифта */
     color: white; /* Цвет текста */
@@ -110,7 +119,7 @@
 }
 
 .home_text2 {
-    margin-top: 40px;
+    margin-top: 10px;
     font-family: 'Poiret One', cursive; /* Устанавливаем шрифт Poiret One для заголовков */
     font-size: 25px; /* Размер шрифта */
     color: black; /* Цвет текста */
@@ -227,6 +236,14 @@
 
 
 
+
+
+
+.login navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 {
+    width: 100%;
+}
+
+
 .login_body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
@@ -256,8 +273,9 @@
 }
 
 .login_container {
-    max-width: 400px;
-    margin: 50px auto;
+    width: 400px;
+    max-height: 400px;
+    margin: 150px auto; /* Отступы сверху и снизу автоматически выравнят контейнер по центру экрана */
     background-color: rgba(0, 0, 0, 0.1);
     padding: 20px;
     color: white;
@@ -268,7 +286,6 @@
     transform: translateY(50px); /* Начальная позиция ниже */
     animation: fadeInUp 1.5s forwards; /* Анимация появления */
 }
-
 @keyframes fadeInUp {
     to {
         filter: blur(0);
@@ -289,19 +306,7 @@
     text-decoration: none;
 }
 
-.login_container {
-    max-width: 400px;
-    margin: 150px auto; /* Отступы сверху и снизу автоматически выравнят контейнер по центру экрана */
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Добавляем выравнивание текста по центру */
-    opacity: 0; /* Начальное состояние: невидимость */
-    filter: blur(10px); /* Начальное состояние: размытость */
-    transform: translateY(50px); /* Начальная позиция ниже */
-    animation: fadeInUp 1.5s forwards; /* Анимация появления */
-}
+
 .login_form {
     margin-top: 20px;
 }
@@ -338,3 +343,119 @@
         background-color: #333;
         color: white;
     }
+
+
+
+
+
+
+
+
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Poiret One', cursive;
+}
+
+.mainPage_body {
+    background: white; /* Белый фон */
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+    .mainPage_body::before {
+        content: '';
+        position: absolute;
+        top: -550%; /* Начальное положение: значительно выше верхней границы экрана */
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgb(68, 68, 133), white 100%); /* Градиентный фон */
+        animation: backgroundSlideIn 2.3s forwards;
+        z-index: -1;
+    }
+
+@keyframes backgroundSlideIn {
+    to {
+        top: 0;
+    }
+}
+
+.mainPage_container {
+    margin-top: 20px;
+}
+
+
+
+
+
+
+.dropdown-menu a {
+    color: black;
+    text-decoration: none;
+}
+
+    .dropdown-menu a:hover {
+        background-color: #f1f1f1;
+    }
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.list-group {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px; /* Ширина списка */
+
+    background-color: #333; /* Цвет фона списка */
+    overflow-y: auto; /* Включаем вертикальную прокрутку при необходимости */
+}
+
+.list-group-item {
+    background-color: black;
+    color: white;
+    border: none;
+    text-align: center;
+}
+
+    .list-group-item a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .list-group-item:hover {
+        background-color: #333;
+    }
+
+        .list-group-item:hover a {
+            color: white;
+        }
+
+.btn-outline-secondary {
+    color: black;
+    border-color: black;
+}
+
+    .btn-outline-secondary:hover {
+        color: white;
+        background-color: black;
+        border-color: black;
+    }
+
+.btn-outline-primary {
+    color: black;
+    border-color: black;
+}
+
+    .btn-outline-primary:hover {
+        color: white;
+        background-color: black;
+        border-color: black;
+    }
+
+

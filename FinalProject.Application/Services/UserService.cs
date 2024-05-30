@@ -1,50 +1,61 @@
-﻿using FinalProject.Application.Services.Interfaces.UnitOfWork;
-using FinalProject.Application.Contracts;
+﻿using AutoMapper;
+using FinalProject.Domain.Enums;
 using FinalProject.Application.Services.Interfaces.UnitOfWork;
 using FinalProject.Domain.Repositories;
-using SpotiPie.Application.Contracts;
-using Mapster;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using FinalProject.Controllers;
 
-namespace FinalProject.Application.Services;
-
-public class UserService(
-    IUserRepository userRepository,
-    IUnitOfWork unitOfWork,
-    IPasswordManager passwordManager) : IUserService
+namespace ExamProject1.Services
 {
-    public async Task<UserGetDto> SignUpAsync(UserCredentialsDto userDto)
+    public class UserService : IUserService
     {
-        var user = new User()
+        private readonly IUserRepository _userRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
+
+        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
-            Login = userDto.Login!,
-            PasswordHash = passwordManager.HashPassword(userDto.Password!),
-            Role = "User"
-        };
+            _userRepository = userRepository;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
+        }
 
-        userRepository.Add(user);
-        await unitOfWork.SaveChangesAsync();
-
-        var userGetDto = new UserGetDto
+        public async Task<List<UserGetDto>> GetAllAsync()
         {
-            Id = user.Id,
-            Login = user.Login,
-            Role = user.Role,
-        };
+            var users = await _userRepository.GetAllAsync();
+            var usersDtos = _mapper.Map<List<UserGetDto>>(users);
 
-        return userGetDto;
-    }
+            return usersDtos;
+        }
 
-    public async Task<UserGetDto?> GetByLoginAsync(UserCredentialsDto userCredentialsDto)
-    {
-        var user = await userRepository.GetByLoginAsync(userCredentialsDto.Login!);
+        public async Task<User> CreateUserAsync(UserCreateDto userDto)
+        {
+            if (await _userRepository.AnyAsync(u => u.Login == userDto.Login))
+                throw new InvalidOperationException("User with this login already exists");
 
-        if (user is null) return null;
+            if (await _userRepository.AnyAsync(u => u.Email == userDto.Email))
+                throw new InvalidOperationException("User with this email already exists");
 
-        if (!passwordManager.VerifyPassword(userCredentialsDto.Password!, user.PasswordHash))
-            return null;
+            var newUser = _mapper.Map<User>(userDto);
 
-        var userDto = user.Adapt<UserGetDto>();
+            _userRepository.Add(newUser);
+            await _unitOfWork.SaveChangesAsync();
 
-        return userDto;
+            return newUser;
+        }
+
+        public async Task<User> GetUserByIdAsync(string userId)
+        {
+            if (!int.TryParse(userId, out int userIdInt))
+            {
+                throw new InvalidOperationException("User not found");
+            }
+            var user = await _userRepository.GetByIdAsync(userIdInt);
+
+            return user;
+        }
+
     }
 }

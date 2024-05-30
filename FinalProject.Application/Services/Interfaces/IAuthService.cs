@@ -1,6 +1,14 @@
-﻿using System.Security.Claims;
-public interface IAuthService
+﻿
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FinalProject.Application.Services.Interfaces
 {
-    public ClaimsIdentity CreateClaimsIdentity(UserGetDto user);
-    public string GenerateJwt(ClaimsIdentity claimsIdentity);
+    public interface IAuthService
+    {
+        Task<User> LoginWithHttpContext(string email, string password);
+    }
 }

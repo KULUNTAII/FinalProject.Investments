@@ -1,4 +1,6 @@
-﻿using FinalProject.Application.Services;
+﻿using ExamProject1.Services;
+using FinalProject.Application.Services;
+using FinalProject.Controllers;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
