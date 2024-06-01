@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FinalProject.Controllers
 {
-    [Route("api/projects")]
+    [Route("api/participants")]
     [ApiController]
     public class ParticipantsController(IParticipantService participantService) : ControllerBase
     {

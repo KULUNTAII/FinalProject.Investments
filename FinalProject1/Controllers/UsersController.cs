@@ -10,7 +10,7 @@ namespace FinalProject.Controllers
 {
 
     [ApiController]
-    [Route("api/user")]
+    [Route("api/users")]
     public class UserController(IUserService userService, IAuthService authService) : ControllerBase
     {
 
@@ -25,7 +25,7 @@ namespace FinalProject.Controllers
         }
 
         // Retrieves all users (accessible to Admin only)
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpGet("all")]
         public async Task<IActionResult> GetAll()
         {
@@ -36,18 +36,22 @@ namespace FinalProject.Controllers
         }
 
         // Retrieves data of the currently authenticated user
-        [Authorize]
+        //[Authorize]
         [HttpGet("my-data")]
         public IActionResult GetUserData()
         {
-            // Retrieve user data for the current user
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(userId))
             {
-                return Unauthorized("no");
+                return Unauthorized("No user ID found.");
             }
 
-            var userData = userService.GetUserByIdAsync(userId);
+            if (!int.TryParse(userId, out int userIdInt))
+            {
+                return BadRequest("Invalid user ID.");
+            }
+
+            var userData = userService.GetUserByIdAsync(userIdInt);
 
             if (userData == null)
             {
@@ -58,9 +62,9 @@ namespace FinalProject.Controllers
         }
 
         // Creates a new user (accessible to Admin only)
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> CreateUser(UserCreateDto userCreate)
+        public async Task<IActionResult> Register(UserCreateDto userCreate)
         {
             // Create a new user asynchronously
             var newUser = await userService.CreateUserAsync(userCreate);

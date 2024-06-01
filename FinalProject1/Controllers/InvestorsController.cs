@@ -12,9 +12,7 @@ namespace FinalProject.Controllers
         public async Task<IActionResult> Create(InvestorCreateDto investorDto)
         {
             await investorService.CreateAsync(investorDto);
-
             return NoContent();
         }
-        
     }
 }

@@ -58,35 +58,8 @@ public static class DependencyInjection
 
         services.AddHttpContextAccessor();
 
-        var securityKey = Encoding.UTF8.GetBytes(configuration["JWT:SecurityKey"]!);
 
-        // Настройка JWT аутентификации
-        services.AddAuthentication(opts =>
-        {
-            opts.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            opts.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opts =>
-        {
-            opts.MapInboundClaims = false;
-            opts.SaveToken = false;
-            opts.TokenValidationParameters = new()
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(securityKey),
-                ValidateAudience = false,
-                ValidateIssuer = false,
-                RequireExpirationTime = true,
-            };
-        });
-
-        // Настройка дефолтной авторизации
-        services
-            .AddAuthorizationBuilder()
-            .SetFallbackPolicy(new AuthorizationPolicyBuilder()
-                .RequireAuthenticatedUser()
-                .Build());
-
+        
         services.AddScoped<GlobalExceptionHandling>();
 
         // Сервисы

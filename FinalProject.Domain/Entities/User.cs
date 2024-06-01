@@ -13,7 +13,5 @@ public class User : Entity
     public required string Email { get; set; }
     [StringLength(200)]
     public required string PasswordHash { get; set; }
-
-    [StringLength(300)]
     public required string Role { get; set; }
 }

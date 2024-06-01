@@ -8,9 +8,10 @@ namespace FinalProject.Application.Services
     public class AuthService : IAuthService
     {
         private readonly IAuthRepository _authRepository;
+        private readonly IPasswordManager _passwordManager;
         private readonly HttpContext _httpContext;
 
-        public AuthService(IAuthRepository authRepository, IHttpContextAccessor accessor)
+        public AuthService(IAuthRepository authRepository, IHttpContextAccessor accessor, IPasswordManager passwordManager)
         {
             _authRepository = authRepository;
 
@@ -20,6 +21,7 @@ namespace FinalProject.Application.Services
             }
 
             _httpContext = accessor.HttpContext;
+            _passwordManager = passwordManager;
         }
 
         public async Task<User> LoginWithHttpContext(string email, string password)
@@ -30,9 +32,7 @@ namespace FinalProject.Application.Services
                 throw new UnauthorizedAccessException("Invalid email or password");
             }
 
-        
-
-            if (user.PasswordHash != password)
+            if (_passwordManager.VerifyPassword(password, user.PasswordHash))
             {
                 throw new UnauthorizedAccessException("Invalid email or password");
             }

@@ -12,14 +12,16 @@ namespace ExamProject1.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IPasswordManager _passwordManager;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, IMapper mapper, IPasswordManager passwordManager)
         {
             _userRepository = userRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _passwordManager = passwordManager;
         }
 
         public async Task<List<UserGetDto>> GetAllAsync()
@@ -40,19 +42,17 @@ namespace ExamProject1.Services
 
             var newUser = _mapper.Map<User>(userDto);
 
+            newUser.PasswordHash = _passwordManager.HashPassword(userDto.Password!);
+
             _userRepository.Add(newUser);
             await _unitOfWork.SaveChangesAsync();
 
             return newUser;
         }
 
-        public async Task<User> GetUserByIdAsync(string userId)
+        public async Task<User?> GetUserByIdAsync(int userId)
         {
-            if (!int.TryParse(userId, out int userIdInt))
-            {
-                throw new InvalidOperationException("User not found");
-            }
-            var user = await _userRepository.GetByIdAsync(userIdInt);
+            var user = await _userRepository.GetByIdAsync(userId);
 
             return user;
         }
