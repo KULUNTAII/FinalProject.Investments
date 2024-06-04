@@ -1,10 +1,6 @@
 ﻿using FinalProject.Domain.Abstractions;
-using FinalProject.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace FinalProject.Infrastructure.Data.Repositories.Abstractions
 {

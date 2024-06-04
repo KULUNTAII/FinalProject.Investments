@@ -1,11 +1,5 @@
-﻿using FinalProject.Domain.Entities;
-using FinalProject.Domain.Enums;
-using System;
-using System.Collections.Generic;
+﻿using FinalProject.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinalProject.Application.Contracts
 {

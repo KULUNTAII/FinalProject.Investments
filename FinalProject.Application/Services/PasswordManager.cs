@@ -1,6 +1,4 @@
-﻿using Org.BouncyCastle.Crypto.Generators;
-
-namespace FinalProject.Application.Services;
+﻿namespace FinalProject.Application.Services;
 
 public class PasswordManager : IPasswordManager
 {

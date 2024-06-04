@@ -5,7 +5,6 @@ namespace FinalProject.Domain.Entities
 {
     public class Investor : Entity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public InvestorType Type { get; set; }

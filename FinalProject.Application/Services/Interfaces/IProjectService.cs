@@ -1,8 +1,4 @@
-﻿
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-public interface IProjectService
+﻿public interface IProjectService
 {
     Task<ProjectGetDto?> GetByIdAsync(int id);
     Task<List<ProjectGetDto>> GetAllAsync();

@@ -2,7 +2,6 @@ using FinalProject.Extensions;
 using FinalProject.Middleware;
 using FinalProject.Application.Extensions;
 using FinalProject.Infrastructure.Extensions;
-using FinalProject.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 

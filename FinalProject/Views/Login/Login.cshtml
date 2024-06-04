@@ -1,4 +1,6 @@
-﻿@{
+﻿@model FinalProject.MVC.Models.LoginViewModel
+
+@{
     ViewData["Title"] = "Login";
 }
 
@@ -11,20 +13,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="login_body">
-    
     <div class="login_container">
         <h1>Login</h1>
-        <form class="login_form">
+        <form asp-action="Login" method="post" class="login_form">
             <div class="login_group">
-                <label for="login_username">Username:</label>
-                <input type="text" id="login_username" name="login_username" required>
+                <label asp-for="Username"></label>
+                <input asp-for="Username" required>
+                <span asp-validation-for="Username" class="text-danger"></span>
             </div>
             <div class="login_group">
-                <label for="login_password">Password:</label>
-                <input type="password" id="login_password" name="login_password" required>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" required>
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <button type="submit" class="login_submit">Login</button>
         </form>
     </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 </body>
 </html>

@@ -1,5 +1,4 @@
-﻿using FinalProject.Domain.Entities;
-using FinalProject.Domain.Enums;
+﻿using FinalProject.Domain.Enums;
 namespace FinalProject.Application.Contracts
 {
     public class InvestorGetDto

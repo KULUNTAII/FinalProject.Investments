@@ -4,9 +4,9 @@ namespace SpotiPie.Application.Contracts;
 
 public record UserCredentialsDto
 {
-    [Required(AllowEmptyStrings = false)]
-    [StringLength(200, MinimumLength = 4)]
-    public string? Login { get; init; }
+
+    [EmailAddress]
+    public string? Email { get; set; }
 
     [Required(AllowEmptyStrings = false)]
     [StringLength(200, MinimumLength = 4)]

@@ -1,11 +1,6 @@
 ﻿using FinalProject.Domain.Entities;
 using FinalProject.Domain.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Infrastructure.Data.Repositories
 {
@@ -18,9 +13,9 @@ namespace FinalProject.Infrastructure.Data.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<User?> GetUserByEmailAsync(string email)
+        public Task<User?> GetUserByEmailAsync(string email)
         {
-            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+            return _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
     }
 }

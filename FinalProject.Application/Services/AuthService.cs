@@ -32,16 +32,16 @@ namespace FinalProject.Application.Services
                 throw new UnauthorizedAccessException("Invalid email or password");
             }
 
-            if (_passwordManager.VerifyPassword(password, user.PasswordHash))
+            if (!_passwordManager.VerifyPassword(password, user.PasswordHash))
             {
                 throw new UnauthorizedAccessException("Invalid email or password");
             }
 
             var claims = new Claim[]
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role, user.Role.ToString()),
+        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+        new Claim(ClaimTypes.Email, user.Email),
+        new Claim(ClaimTypes.Role, user.Role.ToString()),
             };
 
             var identity = new ClaimsIdentity(claims, "Cookies");

@@ -5,13 +5,13 @@ namespace FinalProject.Domain.Entities;
 
 public class User : Entity
 {
-    public int Id { get; set; }
-
     [StringLength(200)]
     public required string Login { get; set; }
-
     public required string Email { get; set; }
+
     [StringLength(200)]
     public required string PasswordHash { get; set; }
     public required string Role { get; set; }
+    public Participant? Participant { get; set; }
+    public Investor? Investor { get; set; }
 }

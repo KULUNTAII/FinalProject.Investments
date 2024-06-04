@@ -21,7 +21,6 @@ namespace FinalProject.Application.Contracts
         public string Country { get; set; }
         public int FavoritesCount { get; set; }
         public List<string> Comments { get; set; }
-
     }
 
 }

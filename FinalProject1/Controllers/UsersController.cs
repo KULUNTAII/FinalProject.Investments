@@ -1,11 +1,9 @@
-﻿using FinalProject.Application.Services;
-using FinalProject.Application.Services.Interfaces;
+﻿using FinalProject.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SpotiPie.Application.Contracts;
 using System.Security.Claims;
-using FinalProject.Domain.Entities;
 using FinalProject.Application.Contracts;
+using SpotiPie.Application.Contracts;
 namespace FinalProject.Controllers
 {
 
@@ -17,13 +15,11 @@ namespace FinalProject.Controllers
         // Logs in a user
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<IActionResult> Login(string email, string password)
+        public async Task<IActionResult> Login(UserCredentialsDto loginRequest)
         {
-            // Attempt to log in with provided email and password
-            var user = await authService.LoginWithHttpContext(email, password);
+            var user = await authService.LoginWithHttpContext(loginRequest.Email!, loginRequest.Password!);
             return Ok("You logged in!");
         }
-
         // Retrieves all users (accessible to Admin only)
         //[Authorize(Roles = "Admin")]
         [HttpGet("all")]
@@ -63,6 +59,7 @@ namespace FinalProject.Controllers
 
         // Creates a new user (accessible to Admin only)
         //[Authorize(Roles = "Admin")]
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Register(UserCreateDto userCreate)
         {

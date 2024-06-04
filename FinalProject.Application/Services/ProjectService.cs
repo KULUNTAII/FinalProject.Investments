@@ -1,7 +1,5 @@
 ﻿using FinalProject.Application.Services.Interfaces.UnitOfWork;
 using FinalProject.Domain.Repositories;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 public class ProjectService : IProjectService
 {

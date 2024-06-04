@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-using FinalProject.Domain.Enums;
-using FinalProject.Application.Services.Interfaces.UnitOfWork;
-using FinalProject.Domain.Repositories;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using FinalProject.Application.Services.Interfaces.UnitOfWork;
 using FinalProject.Controllers;
 
 namespace ExamProject1.Services
@@ -57,5 +51,17 @@ namespace ExamProject1.Services
             return user;
         }
 
+        public async Task<User?> AuthenticateAsync(string username, string password)
+        {
+            var users = await _userRepository.GetAllAsync(); // Ждем завершения задачи
+            var user = users.FirstOrDefault(u => u.Login == username);
+
+            if (user == null || !_passwordManager.VerifyPassword(password, user.PasswordHash))
+            {
+                return null;
+            }
+
+            return user;
+        }
     }
 }
