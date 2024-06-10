@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Views\Login\Login.cshtml.css" />
+    <Compile Include="Views\Login\LoginOg.cshtml.css" />
     <Compile Include="Views\MainPage\MainPage.cshtml.css" />
   </ItemGroup>
 
@@ -22,6 +22,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
@@ -30,6 +34,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FinalProject.Application\FinalProject.Application.csproj" />
+    <ProjectReference Include="..\FinalProject.Infrastructure\FinalProject.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\RegisterInvestor\" />
+    <Folder Include="Views\RegisterParticipant\" />
   </ItemGroup>
 
 </Project>

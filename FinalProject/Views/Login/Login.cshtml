@@ -1,37 +1,27 @@
-﻿@model FinalProject.MVC.Models.LoginViewModel
+﻿@using FinalProject.Application.Contracts
+@using FinalProject.Domain.Enums
+@model UserCreateDto
 
-@{
-    ViewData["Title"] = "Login";
-}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
 <body class="login_body">
     <div class="login_container">
-        <h1>Login</h1>
-        <form asp-action="Login" method="post" class="login_form">
-            <div class="login_group">
-                <label asp-for="Username"></label>
-                <input asp-for="Username" required>
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="login_group">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" type="password" required>
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <button type="submit" class="login_submit">Login</button>
-        </form>
+<form asp-controller="Login" asp-action="LoginUser" method="post">
+    <div>
+        <div class="login_group">
+            <label asp-for="Login"></label>
+            <input asp-for="Login" required>
+            <span asp-validation-for="Login" class="text-danger"></span>
+        </div>
+        <div class="login_group">
+            <label asp-for="Password"></label>
+            <input type="password" placeholder="Use secure and complex passwords." asp-for="Password" type="password" required>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 </body>
-</html>

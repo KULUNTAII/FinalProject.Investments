@@ -18,5 +18,8 @@ namespace FinalProject.Application.Contracts
 
         [Required]
         public Roles? Role { get; set; }
+
+        public ParticipantCreateDto? Participant { get; set; }
+        public InvestorCreateDto? Investor { get; set; }
     }
 }

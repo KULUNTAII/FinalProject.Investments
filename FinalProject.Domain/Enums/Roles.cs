@@ -4,6 +4,6 @@
     {
         Participant = 0,
         Investor = 1,
-        Guest = 2,
+        Admin = 2,
     }
 }

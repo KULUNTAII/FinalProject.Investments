@@ -1,4 +1,4 @@
-﻿using ExamProject1.Services;
+﻿using FinalProject.Services;
 using FinalProject.Application.Services;
 using FinalProject.Controllers;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +12,9 @@ public static class DependencyInjection
         this IServiceCollection services)
     {
         services.AddSingleton<IPasswordManager, PasswordManager>();
+        services.AddScoped<IAuthService, AuthService>();
         services.AddTransient<IUserService, UserService>();
+        services.AddHttpContextAccessor();
 
 
         services.AddScoped<IInvestorService, InvestorService>();

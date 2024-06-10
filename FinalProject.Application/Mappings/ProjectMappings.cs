@@ -9,6 +9,8 @@ namespace FinalProject.Application.Mappings
         {
             CreateMap<Project, ProjectCreateDto>().ReverseMap();
             CreateMap<ProjectCreateDto, Project>().ReverseMap();
+
+            CreateMap<Project, ProjectGetDto>().ReverseMap();
         }
 
     }

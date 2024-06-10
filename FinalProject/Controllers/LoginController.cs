@@ -1,40 +1,24 @@
-﻿using FinalProject.Controllers;
+﻿using FinalProject.Services;
+using FinalProject.Controllers;
 using FinalProject.MVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using SpotiPie.Application.Contracts;
+using FinalProject.Application.Services.Interfaces;
 
 namespace FinalProject.MVC.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController(IAuthService authService) : Controller
     {
-        private readonly IUserService _userService; // предполагается, что у вас есть сервис для работы с пользователями
-
-        public LoginController(IUserService userService)
-        {
-            _userService = userService;
-        }
-
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult Login(string login, string password)
         {
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> LoginUser(string login, string password)
         {
-            if (ModelState.IsValid)
-            {
-                var user = await _userService.AuthenticateAsync(model.Username, model.Password);
-
-                if (user != null)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-            }
-
-            return View(model);
+            await authService.LoginWithHttpContext(login, password);
+            return RedirectToAction("MainPage", "MainPage");
         }
     }
 }

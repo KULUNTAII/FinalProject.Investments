@@ -1,7 +1,7 @@
 ﻿using FinalProject.Application.Services.Interfaces.UnitOfWork;
 using FinalProject.Controllers;
 
-namespace ExamProject1.Services
+namespace FinalProject.Services
 {
     public class UserService : IUserService
     {
@@ -25,14 +25,30 @@ namespace ExamProject1.Services
 
             return usersDtos;
         }
+        public async Task<UserGetDto?> UpdateUserAsync(int id, UserCreateDto genreDto)
+        {
+            var user = await GetUserByIdAsync(id);
 
+            if (user is null) return null;
+
+            user.Login = genreDto.Login!;
+
+            _userRepository.Update(user);
+
+            await _unitOfWork.SaveChangesAsync();
+
+            var userGetDto = new UserGetDto
+            {
+                Id = user.Id,
+                Login = user.Login,
+            };
+
+            return userGetDto;
+        }
         public async Task<User> CreateUserAsync(UserCreateDto userDto)
         {
             if (await _userRepository.AnyAsync(u => u.Login == userDto.Login))
                 throw new InvalidOperationException("User with this login already exists");
-
-            if (await _userRepository.AnyAsync(u => u.Email == userDto.Email))
-                throw new InvalidOperationException("User with this email already exists");
 
             var newUser = _mapper.Map<User>(userDto);
 

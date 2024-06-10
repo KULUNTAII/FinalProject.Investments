@@ -7,6 +7,7 @@ namespace FinalProject.Application.Contracts
         public string Name { get; set; }
         public ProjectCategories Category { get; set; }
         public string Description { get; set; }
+        public string PreviewDescription { get; set; }
         public int TeamsBudget { get; set; }
         public int RequiredBudget { get; set; }
         public DateTime CreationDate { get; set; }

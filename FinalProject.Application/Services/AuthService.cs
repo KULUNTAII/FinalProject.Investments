@@ -1,6 +1,6 @@
 ﻿using FinalProject.Domain.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
 namespace FinalProject.Application.Services
@@ -24,12 +24,12 @@ namespace FinalProject.Application.Services
             _passwordManager = passwordManager;
         }
 
-        public async Task<User> LoginWithHttpContext(string email, string password)
+        public async Task<User> LoginWithHttpContext(string login, string password)
         {
-            var user = await _authRepository.GetUserByEmailAsync(email);
+            var user = await _authRepository.GetUserByLoginAsync(login);
             if (user == null)
             {
-                throw new UnauthorizedAccessException("Invalid email or password");
+                throw new UnauthorizedAccessException("Invalid login or password");
             }
 
             if (!_passwordManager.VerifyPassword(password, user.PasswordHash))
@@ -40,7 +40,6 @@ namespace FinalProject.Application.Services
             var claims = new Claim[]
             {
         new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-        new Claim(ClaimTypes.Email, user.Email),
         new Claim(ClaimTypes.Role, user.Role.ToString()),
             };
 

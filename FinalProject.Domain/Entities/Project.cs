@@ -8,7 +8,7 @@ namespace FinalProject.Domain.Entities
         public int Id { get; set; }
         public required string Name { get; set; }
         public ProjectCategories Category { get; set; }
-        public required string PreviewDescription { get; set; }
+        public string PreviewDescription { get; set; }
         public string? FullDescription { get; set; }
         public int TeamsBudget { get; set; }
         public int RequiredBudget { get; set; }
@@ -18,6 +18,6 @@ namespace FinalProject.Domain.Entities
         public string? Links { get; set; }
         public int? FavoritesCount { get; set; }
         public List<Investor>? Investors { get; set; }
-        public required List<Participant> Participants { get; set; }
+        public List<Participant> Participants { get; set; }
     }
 }

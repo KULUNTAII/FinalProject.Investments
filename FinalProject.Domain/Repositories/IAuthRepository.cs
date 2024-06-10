@@ -4,6 +4,6 @@ namespace FinalProject.Domain.Repositories
 {
     public interface IAuthRepository
     {
-        Task<User?> GetUserByEmailAsync(string email);
+        Task<User?> GetUserByLoginAsync(string email);
     }
 }

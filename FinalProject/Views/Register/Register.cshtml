@@ -1,48 +1,98 @@
-﻿@{
-    ViewData["Title"] = "Register";
-}
+﻿@using FinalProject.Application.Contracts
+@using FinalProject.Domain.Enums
+@model UserCreateDto
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>@ViewData["Title"]</title>
-</head>
-<body class="reg_body">
+<div class="reg_body">
     <div class="reg_container">
-        <h1>Registration</h1>
-        <form class="reg_form">
-            <div class="form-group">
-                <label for="name">First Name:</label>
-                <input type="text" id="name" name="name" required>
+        <h1>TestRegistration</h1>
+
+        <form asp-controller="Register" asp-action="RegisterForm" method="post" class="reg_form">
+            <div class="form_group">
+                <label>Login</label>
+                <input class="form_control" type="text" placeholder="spiderman3000" asp-for="Login" required />
+
+                <label>Password</label>
+                <input class="form_control" type="password" placeholder="Use secure and complex passwords." asp-for="Password" required />
+
+                <label>Role</label>
+                <select class="form_control" asp-for="Role" id="role-select" required>
+                    <option value="">Select role</option>
+                    @foreach (var role in (List<string>)ViewBag.Roles)
+                    {
+                        <option value="@role">@role</option>
+                    }
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label for="last-name">Last Name:</label>
-                <input type="text" id="last-name" name="last-name" required>
+
+            <div id="investor-form" class="additional_form" style="display: none;">
+                <h2>Investor Information</h2>
+                <label>Name</label>
+                <input class="form_control" type="text" placeholder="enter..." asp-for="Investor.Name" />
+
+                <label>Description</label>
+                <input class="form_control" type="text" placeholder="Tell people about you" asp-for="Investor.Description" />
+
+                <label>Type</label>
+                <select class="form_control" asp-for="Investor.Type" id="investor-type-select" required>
+                    <option value="">Select type</option>
+                    @foreach (var type in (List<string>)ViewBag.InvestorTypes)
+                    {
+                        <option value="@type">@type</option>
+                    }
+                </select>
+                <span asp-validation-for="Investor.Type" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" name="dob" required>
+
+            <div id="participant-form" class="additional_form" style="display: none;">
+                <h2>Participant Information</h2>
+                <label>Name</label>
+                <input class="form_control" type="text" placeholder="Mary" asp-for="Participant.Name" />
+
+                <label>Last name</label>
+                <input class="form_control" type="text" placeholder="Kreestmuz" asp-for="Participant.LastName" />
+
+                <label>Bio</label>
+                <input class="form_control" type="text" placeholder="Tell something about yourself!" asp-for="Participant.Bio" />
+
+                <label>Work experience</label>
+                <input class="form_control" type="text" placeholder="Example: Worked as [position] in the [company name]" asp-for="Participant.WorkExperience" />
+
+                <label>Achievements</label>
+                <input class="form_control" type="text" placeholder="What are you most proud of?" asp-for="Participant.Achievements" />
+
+                <label>Skills</label>
+                <input class="form_control" type="text" placeholder="Fast learner, SMM specialist, professional dancer..." asp-for="Participant.Skills" />
+
+                <label>Links</label>
+                <input class="form_control" type="text" placeholder="Mary" asp-for="Participant.Links" />
             </div>
-            <div class="form-group">
-                <label for="login">Username:</label>
-                <input type="text" id="login" name="login" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit" class="reg_button">Register</button>
+
+            <button type="submit" class="reg_button">Save</button>
         </form>
     </div>
+</div>
 
-    @* <script>
-        $(document).ready(function () {
-            var body = $("body");
-            body.fadeIn(600);
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var roleSelect = document.getElementById('role-select');
+            var investorForm = document.getElementById('investor-form');
+            var participantForm = document.getElementById('participant-form');
+
+            roleSelect.addEventListener('change', function () {
+                var selectedRole = roleSelect.value;
+                if (selectedRole === 'Investor') {
+                    investorForm.style.display = 'block';
+                    participantForm.style.display = 'none';
+                } else if (selectedRole === 'Participant') {
+                    participantForm.style.display = 'block';
+                    investorForm.style.display = 'none';
+                } else {
+                    investorForm.style.display = 'none';
+                    participantForm.style.display = 'none';
+                }
+            });
         });
-    </script> *@
-</body>
-</html>
+    </script>
+}

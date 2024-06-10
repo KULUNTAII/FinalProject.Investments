@@ -13,7 +13,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> opts) : DbContext(opts)
     {
         modelBuilder.Entity<Investor>().Property(i => i.Id).ValueGeneratedNever();
         modelBuilder.Entity<Participant>().Property(p => p.Id).ValueGeneratedNever();
-
+         
         modelBuilder.Entity<User>()
             .HasOne(u => u.Investor)
             .WithOne()

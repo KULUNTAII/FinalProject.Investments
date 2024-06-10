@@ -6,6 +6,8 @@
         {
             CreateMap<Participant, ParticipantCreateDto>().ReverseMap();
             CreateMap<ParticipantCreateDto, Participant>().ReverseMap();
+
+            CreateMap<Participant, ParticipantGetDto>().ReverseMap();
         }
     }
 }

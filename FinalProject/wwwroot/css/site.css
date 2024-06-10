@@ -135,17 +135,8 @@
 
 /* styles.css */
 
-.reg_body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* добавляем свойство overflow: hidden; чтобы убрать горизонтальный скролл, если он появляется */
-    position: relative; /* добавляем свойство position: relative; чтобы псевдоэлемент был относительно блока */
-    min-height: 100vh; /* добавляем свойство min-height: 100vh; чтобы блок занимал весь видимый экран */
-}
 
-    .reg_body::before {
+    .reg_body {
         content: '';
         position: absolute;
         top: -550%; /* Начальное положение: значительно выше верхней границы экрана */
@@ -154,7 +145,7 @@
         bottom: 0;
         background: linear-gradient(to bottom, rgb(68, 68, 133), white 100%);
         animation: backgroundSlideIn 2.3s forwards;
-        z-index: -1; /* Размещаем псевдоэлемент на задний план */
+        z-index: -1; 
     }
 
 @keyframes backgroundSlideIn {
@@ -164,17 +155,17 @@
 }
 
 .reg_container {
+    text-align: center;
+    opacity: 0;
+    filter: blur(10px); /* Начальное состояние: размытость */
+    transform: translateY(50px); /* Начальная позиция ниже */
+    animation: fadeInUp 2.5s forwards;
     max-width: 400px;
     margin: 50px auto;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 20px;
     color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Добавляем выравнивание текста по центру */
-    opacity: 0; /* Начальное состояние: невидимость */
-    filter: blur(10px); /* Начальное состояние: размытость */
-    transform: translateY(50px); /* Начальная позиция ниже */
-    animation: fadeInUp 1.5s forwards; /* Анимация появления */
 }
 
 @keyframes fadeInUp {
@@ -185,49 +176,61 @@
     }
 }
 
-    .reg_container h1 {
-        margin-top: 0;
-        font-size: 24px;
-        text-align: center;
-    }
+.reg_container h1 {
+    margin-top: 0;
+    font-size: 24px;
+}
+.reg_container {
+    margin-top: 150px;
+}
 
 .reg_form {
+    font-family: 'Poiret One', cursive;
     margin-top: 20px;
 }
 
-.form-group {
+.form_group {
     margin-bottom: 15px;
 }
 
-    .form-group label {
+    .form_group label {
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
     }
 
-    .form-group input {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-    }
+.form_control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
 
 .reg_button {
-    opacity: 65%;
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: black; /* Изменяем цвет фона кнопки на черный */
-    color: #fff; /* Устанавливаем цвет текста кнопки на белый */
+    background-color: black;
+    color: #fff;
     border: none;
     border-radius: 3px;
     cursor: pointer;
     text-decoration: none;
+    opacity: 65%;
 }
 
-.reg_button:hover {
-    background-color: #333;
-    color: white;
+    .reg_button:hover {
+        background-color: #333;
+        color: white;
+    }
+
+.additional_form h2 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.additional_form .form_control {
+    margin-bottom: 10px;
 }
 
 

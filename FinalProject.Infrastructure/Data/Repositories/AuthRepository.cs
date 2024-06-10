@@ -13,9 +13,9 @@ namespace FinalProject.Infrastructure.Data.Repositories
             _dbContext = dbContext;
         }
 
-        public Task<User?> GetUserByEmailAsync(string email)
+        public Task<User?> GetUserByLoginAsync(string login)
         {
-            return _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+            return _dbContext.Users.FirstOrDefaultAsync(u => u.Login == login);
         }
     }
 }

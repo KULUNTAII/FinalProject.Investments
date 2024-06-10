@@ -1,7 +1,35 @@
+using FinalProject.Application.Extensions;
+using FinalProject.Infrastructure.Extensions;
+using FinalProject.Domain.Repositories;
+using FinalProject.Application.Services.Interfaces;
+using FinalProject.Application.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddControllersWithViews();
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddAuthentication()
+    .AddCookie("Cookies", opts =>
+    {
+        opts.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+
+        opts.Events.OnRedirectToLogin = (context) =>
+        {
+            context.Response.StatusCode = 401;
+            return Task.CompletedTask;
+        };
+
+        opts.Events.OnRedirectToAccessDenied = (context) =>
+        {
+            context.Response.StatusCode = 403;
+            return Task.CompletedTask;
+        };
+    });
 
 var app = builder.Build();
 

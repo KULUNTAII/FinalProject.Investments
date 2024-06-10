@@ -1,0 +1,30 @@
+﻿@using FinalProject.Application.Contracts
+@model UserCreateDto
+
+<h1>Investor</h1>
+
+
+<form asp-controller="Register" asp-action="RegisterForm" method="post" action="/Home">
+    <div>
+        <label>Name</label>
+        <input class="form-control ml-2" type="text"
+               placeholder="enter..."
+               asp-for="Investor.Name"
+               required />
+        <label>Description</label>
+        <input class="form-control ml-2" type="text"
+               placeholder="Tell people about you"
+               asp-for="Investor.Description"
+               required />
+         <label>Type</label>
+        <select class="form-control ml-2" asp-for="Investor.Type">
+            <option value="">Select type</option>
+            @foreach (var type in (List<string>)ViewBag.InvestorTypes)
+            {
+                <option value="@type">@type</option>
+            }
+        </select>
+    </div>
+    <button class="btn btn-primary mt-2" type="submit">Save</button>
+</form>
+
