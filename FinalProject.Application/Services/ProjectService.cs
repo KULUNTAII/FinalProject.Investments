@@ -4,14 +4,18 @@ using FinalProject.Domain.Repositories;
 public class ProjectService : IProjectService
 {
     private readonly IProjectRepository projectRepository;
+    private readonly IAuthService authService;
+    private readonly IUserRepository userRepository;
     private readonly IUnitOfWork unitOfWork;
     private readonly IMapper mapper;
 
-    public ProjectService(IProjectRepository projectRepository, IUnitOfWork unitOfWork, IMapper mapper)
+    public ProjectService(IProjectRepository projectRepository, IUnitOfWork unitOfWork, IMapper mapper, IUserRepository userRepository, IAuthService authService)
     {
         this.projectRepository = projectRepository;
         this.unitOfWork = unitOfWork;
         this.mapper = mapper;
+        this.userRepository = userRepository;
+        this.authService = authService;
     }
 
     public async Task<ProjectGetDto?> GetByIdAsync(int id)
@@ -38,7 +42,11 @@ public class ProjectService : IProjectService
     {
         var project = mapper.Map<Project>(projectDto);
 
-        projectRepository.Add(project);
+        var user = await authService.GetCurrentLoggedInUser();
+
+        user.Participant.Projects.Add(project);
+
+        userRepository.Update(user);
 
         await unitOfWork.SaveChangesAsync();
     }

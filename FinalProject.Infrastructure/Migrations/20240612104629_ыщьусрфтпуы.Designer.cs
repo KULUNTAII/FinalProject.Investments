@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240612104629_ыщьусрфтпуы")]
+    partial class ыщьусрфтпуы
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,9 +91,8 @@ namespace FinalProject.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Category")
+                        .HasColumnType("int");
 
                     b.Property<string>("Contacts")
                         .HasColumnType("nvarchar(max)");
@@ -100,6 +102,9 @@ namespace FinalProject.Infrastructure.Migrations
 
                     b.Property<DateTime?>("Deadline")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("FavoritesCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("FullDescription")
                         .HasColumnType("nvarchar(max)");

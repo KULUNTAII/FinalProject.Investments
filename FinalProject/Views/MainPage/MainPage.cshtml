@@ -1,7 +1,4 @@
-﻿@page
-@model FinalProject.MVC.Views.MainPage.MainPageModel
-@{
-}
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,13 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
 </head>
 <body class="mainPage_body">
-        
-
+    <div class="container">
         <div class="row">
             <div class="col-md-3">
                 <ul class="list-group">
-                    <li class="list-group-item"><a href="#">My projects</a></li>
-                    <li class="list-group-item"><a href="#">Create new project</a></li>
+                    <li class="list-group-item"><a asp-controller="MainPage" asp-action="ShowProjects">My projects</a></li>
+                    <li class="list-group-item"><a asp-controller="Project" asp-action="Project">Create new project</a></li>
                     <li class="list-group-item"><a href="#">Settings</a></li>
                     <li class="list-group-item"><a href="#">Projects</a></li>
                     <li class="list-group-item"><a href="#">Creators</a></li>
@@ -28,9 +24,10 @@
                 </ul>
             </div>
             <div class="col-md-9">
-                <!-- Main content goes here -->
+                
             </div>
         </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>

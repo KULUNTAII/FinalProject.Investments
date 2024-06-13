@@ -6,7 +6,7 @@
     <div class="reg_container">
         <h1>TestRegistration</h1>
 
-        <form asp-controller="Register" asp-action="RegisterForm" method="post" class="reg_form">
+        <form asp-controller="Register" asp-action="RegisterForm" method="post" class="reg_form" id="registration-form">
             <div class="form_group">
                 <label>Login</label>
                 <input class="form_control" type="text" placeholder="spiderman3000" asp-for="Login" required />
@@ -34,7 +34,7 @@
                 <input class="form_control" type="text" placeholder="Tell people about you" asp-for="Investor.Description" />
 
                 <label>Type</label>
-                <select class="form_control" asp-for="Investor.Type" id="investor-type-select" required>
+                <select class="form_control" asp-for="Investor.Type" id="investor-type-select">
                     <option value="">Select type</option>
                     @foreach (var type in (List<string>)ViewBag.InvestorTypes)
                     {
@@ -68,7 +68,7 @@
                 <input class="form_control" type="text" placeholder="Mary" asp-for="Participant.Links" />
             </div>
 
-            <button type="submit" class="reg_button">Save</button>
+            <button type="submit" class="reg_button" id="submit-button">Save</button>
         </form>
     </div>
 </div>
@@ -79,18 +79,22 @@
             var roleSelect = document.getElementById('role-select');
             var investorForm = document.getElementById('investor-form');
             var participantForm = document.getElementById('participant-form');
+            var submitButton = document.getElementById('submit-button');
 
             roleSelect.addEventListener('change', function () {
                 var selectedRole = roleSelect.value;
                 if (selectedRole === 'Investor') {
                     investorForm.style.display = 'block';
                     participantForm.style.display = 'none';
+                    submitButton.disabled = false;
                 } else if (selectedRole === 'Participant') {
                     participantForm.style.display = 'block';
                     investorForm.style.display = 'none';
+                    submitButton.disabled = false;
                 } else {
                     investorForm.style.display = 'none';
                     participantForm.style.display = 'none';
+                    submitButton.disabled = true;
                 }
             });
         });

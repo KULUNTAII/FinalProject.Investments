@@ -12,6 +12,6 @@ namespace FinalProject.Domain.Entities
         public string? Skills { get; set; }
         public List<string>? Links { get; set; }
         public string? Qualification { get; set; }
-        public List<Project>? Projects { get; set; }
+        public List<Project> Projects { get; set; } = [];
     }
 }

@@ -22,9 +22,12 @@ namespace FinalProject.MVC.Controllers
             {
                 dto.Participant = null;
             }
-
+            if (ViewBag.Roles == "Participant")
+            {
+                dto.Investor = null;
+            }
             await userService.CreateUserAsync(dto);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("MainPage", "MainPage");
         }
 
         public ActionResult FinalRegisterForm(UserCreateDto dto)

@@ -5,5 +5,6 @@ namespace FinalProject.Domain.Repositories
     public interface IAuthRepository
     {
         Task<User?> GetUserByLoginAsync(string email);
+        Task<User?> GetUserByIdAsync(int id);
     }
 }

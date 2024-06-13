@@ -50,5 +50,16 @@ namespace FinalProject.Application.Services
 
             return user;
         }
+
+        public async Task<User> GetCurrentLoggedInUser()
+        {
+            var userIdClaim = _httpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var userId = int.Parse(userIdClaim);
+
+            var user = await _authRepository.GetUserByIdAsync(userId);
+
+            return user;
+        }
     }
 }

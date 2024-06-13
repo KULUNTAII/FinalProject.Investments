@@ -17,5 +17,11 @@ namespace FinalProject.Infrastructure.Data.Repositories
         {
             return _dbContext.Users.FirstOrDefaultAsync(u => u.Login == login);
         }
+
+        public Task<User?> GetUserByIdAsync(int id) 
+        {
+            return _dbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
+        }
     }
 }
+ 

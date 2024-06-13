@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240611144755_delete-enums")]
+    partial class deleteenums
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,6 +40,9 @@ namespace FinalProject.Infrastructure.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("ProfileImage")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
@@ -65,6 +71,9 @@ namespace FinalProject.Infrastructure.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("ProfileImage")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Qualification")
                         .HasColumnType("nvarchar(max)");
@@ -98,8 +107,11 @@ namespace FinalProject.Infrastructure.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("Deadline")
+                    b.Property<DateTime>("Deadline")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("FavoritesCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("FullDescription")
                         .HasColumnType("nvarchar(max)");

@@ -1,0 +1,44 @@
+﻿@using FinalProject.Application.Contracts
+@using FinalProject.Domain.Enums
+@model ProjectCreateDto
+
+<div class="proj_body">
+    <div class="proj_container">
+        <h1 class="proj_h1">Project creation</h1>
+
+        <form asp-controller="Project" asp-action="ProjectForm" method="post" class="proj_form">
+            <div class="proj_form_group">
+                <label>Project name</label>
+                <input class="proj_form_control" type="text" placeholder="Enter project name..." asp-for="Name" required />
+
+                <label>Category</label>
+                <input class="proj_form_control" type="text" placeholder="Entertaiment, commerce, education..." asp-for="Category" required />
+
+                <label>Preview Description</label>
+                <input class="proj_form_control" type="text" placeholder="A brief description of your project" asp-for="PreviewDescription" />
+
+                <label>Description</label>
+                <input class="proj_form_control" type="text" placeholder="Full project description" asp-for="Description" />
+
+                <label>Teams Budget (in dolars)</label>
+                <input class="proj_form_control" type="number" placeholder="ENter exact or approximate number" asp-for="TeamsBudget" required />
+
+                <label>Required Budget (in dollars)</label>
+                <input class="proj_form_control" type="number" placeholder="ENter exact or approximate number" asp-for="RequiredBudget" required />
+
+                <label>Deadline (optional)</label>
+                <input class="proj_form_control" type="date"  asp-for="Deadline" required />
+
+                <label>Contacts (optional) </label>
+                <input class="proj_form_control" type="text" placeholder="Enter contacts..." asp-for="Contacts" />
+
+                <label>Links (optional)</label>
+                <input class="proj_form_control" type="text" placeholder="Enter links..." asp-for="Links" />
+            </div>
+
+            <button type="submit" class="proj_button">Save</button>
+        </form>
+    </div>
+</div>
+
+}
