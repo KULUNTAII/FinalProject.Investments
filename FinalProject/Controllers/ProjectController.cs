@@ -1,4 +1,5 @@
-﻿using FinalProject.Application.Contracts;
+﻿using AutoMapper;
+using FinalProject.Application.Contracts;
 using FinalProject.Application.Services;
 using FinalProject.Application.Services.Interfaces;
 using FinalProject.Domain.Entities;
@@ -16,14 +17,34 @@ namespace FinalProject.MVC.Controllers
             return View();
         }
 
-        [Authorize]   
-        public async Task<IActionResult> ProjectForm(ProjectCreateDto dto)
+        [Authorize]
+        public async Task<IActionResult> ProjectForm()
         {
-            dto.CreationDate = DateTime.Now;
-            await projectService.CreateAsync(dto);
-            return RedirectToAction("MainPage", "MainPage");
+            return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ProjectForm(ProjectCreateDto dto)
+        {
+            if (dto.file != null && dto.file.Length > 0)
+            {
+                var filePath = Path.Combine("wwwroot","uploads", dto.file.FileName );
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await dto.file.CopyToAsync(stream);
+                }
+                dto.CreationDate = DateTime.Now;
+                dto.filePath = dto.file.FileName;
+                await projectService.CreateAsync(dto);
+            }
+            else
+            {
+                ViewBag.Message = "Please choose a valid file";
+            }
+
+                return RedirectToAction("MainPage", "MainPage");
+        }
         public async Task<IActionResult> ShowProjects()
         {
             var projects = await projectService.GetAllAsync();

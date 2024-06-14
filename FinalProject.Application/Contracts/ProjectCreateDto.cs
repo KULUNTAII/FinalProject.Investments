@@ -1,4 +1,5 @@
 ﻿using FinalProject.Domain.Enums;
+using Microsoft.AspNetCore.Http;
 
 namespace FinalProject.Application.Contracts
 {
@@ -9,6 +10,8 @@ namespace FinalProject.Application.Contracts
         public string Description { get; set; }
         public string PreviewDescription { get; set; }
         public int TeamsBudget { get; set; }
+        public IFormFile file { get; set; }
+        public string filePath { get; set; }
         public int? RequiredBudget { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime? Deadline { get; set; }

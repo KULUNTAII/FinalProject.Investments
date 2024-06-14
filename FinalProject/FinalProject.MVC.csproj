@@ -40,6 +40,7 @@
   <ItemGroup>
     <Folder Include="Views\RegisterInvestor\" />
     <Folder Include="Views\RegisterParticipant\" />
+    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
 </Project>

@@ -6,7 +6,7 @@
     <div class="proj_container">
         <h1 class="proj_h1">Project creation</h1>
 
-        <form asp-controller="Project" asp-action="ProjectForm" method="post" class="proj_form">
+        <form asp-controller="Project" asp-action="ProjectForm" method="post" class="proj_form" enctype="multipart/form-data">
             <div class="proj_form_group">
                 <label>Project name</label>
                 <input class="proj_form_control" type="text" placeholder="Enter project name..." asp-for="Name" required />
@@ -34,6 +34,12 @@
 
                 <label>Links (optional)</label>
                 <input class="proj_form_control" type="text" placeholder="Enter links..." asp-for="Links" />
+
+                <lable>Image</lable>
+                    <tr>
+                        <td><p>Choose file: </p></td>
+                        <td><input type="file" name="file" /></td>
+                    </tr>
             </div>
 
             <button type="submit" class="proj_button">Save</button>

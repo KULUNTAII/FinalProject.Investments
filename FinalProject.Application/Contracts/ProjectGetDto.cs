@@ -17,6 +17,7 @@ namespace FinalProject.Application.Contracts
         public DateTime CreationDate { get; set; }
         public DateTime Deadline { get; set; }
         public List<string> Contacts { get; set; } = [];
+        public string? filePath { get; set; }
         public string? Links { get; set; }
     }
 

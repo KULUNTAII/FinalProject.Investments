@@ -15,6 +15,7 @@ namespace FinalProject.Domain.Entities
         public DateTime? Deadline { get; set; }
         public List<string>? Contacts { get; set; }
         public string? Links { get; set; }
+        public string filePath {  get; set; }
         public List<Investor> Investors { get; set; } = [];
         public List<Participant> Participants { get; set; } = [];
 

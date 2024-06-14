@@ -14,7 +14,8 @@ namespace FinalProject.MVC.Controllers
         public async Task<IActionResult> ShowProjects()
         {
             var projects = await projectService.GetAllAsync();
-            return View(projects);
+
+            return PartialView("_ProjectsPartial", projects);
         }
     }
 }

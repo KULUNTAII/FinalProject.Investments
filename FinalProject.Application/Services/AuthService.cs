@@ -53,7 +53,7 @@ namespace FinalProject.Application.Services
 
         public async Task<User> GetCurrentLoggedInUser()
         {
-            var userIdClaim = _httpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userIdClaim = _httpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
 
             var userId = int.Parse(userIdClaim);
 
