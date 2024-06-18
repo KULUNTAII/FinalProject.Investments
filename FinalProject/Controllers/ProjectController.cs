@@ -28,14 +28,15 @@ namespace FinalProject.MVC.Controllers
         {
             if (dto.file != null && dto.file.Length > 0)
             {
-                var filePath = Path.Combine("wwwroot","uploads", dto.file.FileName );
+                dto.CreationDate = DateTime.Now;
+                var fileName = Path.GetFileNameWithoutExtension(dto.file.FileName) + dto.Name + Path.GetExtension(dto.file.FileName);
+                var filePath = Path.Combine("wwwroot", "uploads", fileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await dto.file.CopyToAsync(stream);
                 }
-                dto.CreationDate = DateTime.Now;
-                dto.filePath = dto.file.FileName;
+                dto.filePath = fileName;
                 await projectService.CreateAsync(dto);
             }
             else
@@ -43,8 +44,9 @@ namespace FinalProject.MVC.Controllers
                 ViewBag.Message = "Please choose a valid file";
             }
 
-                return RedirectToAction("MainPage", "MainPage");
+            return RedirectToAction("MainPage", "MainPage");
         }
+
         public async Task<IActionResult> ShowProjects()
         {
             var projects = await projectService.GetAllAsync();

@@ -14,29 +14,40 @@
         <div class="row">
             <div class="col-md-3">
                 <ul class="list-group">
-                    <li class="list-group-item"><a id="myProjectsLink" href="#">My projects</a></li>
+                    <li class="list-group-item"><a id="ProjectsLink" href="#">projects</a></li>
                     <li class="list-group-item"><a asp-controller="Project" asp-action="Project">Create new project</a></li>
-                    <li class="list-group-item"><a href="#">Settings</a></li>
-                    <li class="list-group-item"><a href="#">Projects</a></li>
+                    <li class="list-group-item"><a href="#">My projects</a></li>
                     <li class="list-group-item"><a href="#">Creators</a></li>
                     <li class="list-group-item"><a href="#">Investors</a></li>
+                    <li class="list-group-item"><a href="#">Settings</a></li>
                 </ul>
             </div>
         </div>
     </div>
             <div id="projectsContainer">
-                <!-- Здесь будет загружаться содержимое проектов -->
             </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '@Url.Action("ShowProjects", "MainPage")',
+                type: 'GET',
+                success: function (result) {
+                    $('#projectsContainer').html(result);
+                },
+                error: function () {
+                    console.error('Failed to load projects.');
+                }
+            });
+        });
         $(function () {
-            $('#myProjectsLink').click(function (e) {
+            $('#ProjectsLink').click(function (e) {
                 e.preventDefault();
 
                 $.ajax({
-                    url: '@Url.Action("ShowProjects", "MainPage")', // Замените на правильный URL вашего метода
+                    url: '@Url.Action("ShowProjects", "MainPage")', 
                     type: 'GET',
                     success: function (result) {
                         $('#projectsContainer').html(result);

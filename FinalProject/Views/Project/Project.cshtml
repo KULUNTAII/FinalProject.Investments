@@ -18,13 +18,13 @@
                 <input class="proj_form_control" type="text" placeholder="A brief description of your project" asp-for="PreviewDescription" />
 
                 <label>Description</label>
-                <input class="proj_form_control" type="text" placeholder="Full project description" asp-for="Description" />
+                <textarea class="proj_form_control" type="text" placeholder="Full project description" asp-for="FullDescription"></textarea> />
 
                 <label>Teams Budget (in dolars)</label>
-                <input class="proj_form_control" type="number" placeholder="ENter exact or approximate number" asp-for="TeamsBudget" required />
+                <input class="proj_form_control" type="number" placeholder="Enter an exact or approximate number" asp-for="TeamsBudget" required />
 
                 <label>Required Budget (in dollars)</label>
-                <input class="proj_form_control" type="number" placeholder="ENter exact or approximate number" asp-for="RequiredBudget" required />
+                <input class="proj_form_control" type="number" placeholder="Enter an exact or approximate number" asp-for="RequiredBudget" required />
 
                 <label>Deadline (optional)</label>
                 <input class="proj_form_control" type="date"  asp-for="Deadline" required />

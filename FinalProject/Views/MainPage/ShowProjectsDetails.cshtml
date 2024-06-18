@@ -1,0 +1,71 @@
+﻿@using FinalProject.Domain.Entities
+@model Project
+
+<div class="project-details-body">
+    <div class="project-details-container">
+    <div class="top-half-project">
+    <h2 class="view_project_name">@Model.Name</h2>
+    <p class="view_project_prevdesc">@Model.PreviewDescription</p>
+    @if (!string.IsNullOrEmpty(Model.filePath))
+    {
+        <img class="view_project_img" src="~/uploads/@Model.filePath" style="max-width: 100%; border-radius: 10px;" />
+    }
+    </div>
+    <div class="project-description">
+        <pre class="view_project_fulldesc">@Model.FullDescription</pre>
+    </div>
+    <style>
+        pre { 
+            max-width: 100%;
+            overflow-x: auto; 
+            white-space: pre-wrap;
+        }
+    </style>
+    <div class="project-category">
+        <p class="view_project_category">Category: @Model.Category</p>
+    </div>
+
+    <div class="project-dates">
+    <p class="view_project_crdate">Creation Date: @Model.CreationDate.ToString("dd/MM/yyyy")</p>
+
+    @if (Model.Deadline.HasValue)
+    {
+        <p class="view_project_deadline">Deadline: @Model.Deadline.Value.ToString("dd/MM/yyyy")</p>
+    }
+    else
+    {
+        <p class="view_project_deadline">Deadline: No deadline specified</p>
+    }
+    </div>
+    <div class="proj_participants">
+    <p class="view_project_participants">
+        Participants:
+        <ul>
+            @foreach (var participant in Model.Participants)
+            {
+                <li>@participant.Name @participant.LastName</li>
+            }
+        </ul>
+    </p>
+    </div>
+
+    <div class="proj_investors">
+    @if (Model.Investors.Any())
+{
+    <p class="view_project_investors">
+        Investors:
+        <ul>
+            @foreach (var investor in Model.Investors)
+            {
+                <li>@investor.Name</li>
+            }
+        </ul>
+    </p>
+}
+else
+{
+    <p class="view_project_investors">This project does not have any investors yet.</p>
+}
+    </div>
+</div>
+</div>

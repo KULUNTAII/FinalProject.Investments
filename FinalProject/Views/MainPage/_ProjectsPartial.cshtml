@@ -1,18 +1,47 @@
 ﻿@using FinalProject.Application.Contracts
 @model List<ProjectGetDto>
 
-<div class="row">
+<div class="row project-from">
     @foreach (var project in Model)
     {
-        <div class="col-md-3 col-sm-6 col-12 mb-4 proj_form_container">
-            <div class="card">
-                <div class="project-card-body">
-                    <h5 class="card-title">@project.Name</h5>
-                    <p class="card-text">@project.PreviewDescription</p>
-                    <p class="card-text"><small class="text-muted">@project.Category</small></p>
-                    <img src="~/uploads/@project.filePath"; style="width: 300px; height: auto; align-items: center; border-radius: 20px;  padding: 10px;" class="">
+        <div class="col-7 mb-4 proj_main_body">
+            <div class="proj_form_container">
+                <div class="card">
+                    <div class="project-card-body">
+                        <p class="card-title">@project.Name</p>
+                        <p class="card-text-1">@project.PreviewDescription</p>
+                        <p class="card-text-2"><small class="text-muted">@project.Category</small></p>
+                        @if (!string.IsNullOrEmpty(project.filePath))
+                        {
+                            <img src="~/uploads/@project.filePath" style="border-radius: 10px; margin-bottom: 20px;" class="">
+                        }
+                        <p>Creation Date: @project.CreationDate.ToString("dd/MM/yyyy")</p>
+                        <a asp-controller="MainPage" asp-action="ShowProjectsDetails" asp-route-projectId="@project.Id" class="btn btn-primary project-details-link">View Details</a>
+                    </div>
                 </div>
             </div>
         </div>
     }
 </div>
+
+<script>
+    // $(function () {
+    //     $('.project-details-link').click(function (e) {
+    //         e.preventDefault();
+
+    //         var projectId = $(this).data('project-id');
+
+    //         $.ajax({
+    //             url: '@Url.Action("ShowProjectDetails", "MainPage")',
+    //             type: 'GET',
+    //             data: { projectId: projectId },
+    //             success: function (result) {
+    //                 $('#projectsContainer').html(result);
+    //             },
+    //             error: function () {
+    //                 console.error('Failed to load project details.');
+    //             }
+    //         });
+    //     });
+    // });
+</script>

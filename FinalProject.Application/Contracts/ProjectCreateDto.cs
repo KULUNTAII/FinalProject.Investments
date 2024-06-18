@@ -7,7 +7,7 @@ namespace FinalProject.Application.Contracts
     {
         public string Name { get; set; }
         public string Category { get; set; }
-        public string Description { get; set; }
+        public string FullDescription { get; set; }
         public string PreviewDescription { get; set; }
         public int TeamsBudget { get; set; }
         public IFormFile file { get; set; }

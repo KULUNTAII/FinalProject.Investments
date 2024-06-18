@@ -359,16 +359,18 @@ body, header {
     position: relative;
     overflow: auto;
     min-height: 100vh;
+
 }
 
     .mainPage_body::before {
         content: '';
         position: absolute;
-        top: -550%; 
+        top: -550%;
         left: 0;
         right: 0;
+        position: fixed;
         bottom: 0;
-        background: linear-gradient(to bottom, rgb(68, 68, 133), white 100%); 
+        background: linear-gradient(to bottom, rgb(68, 68, 133), white 100%);
         animation: backgroundSlideIn 2.3s forwards;
         z-index: -1;
     }
@@ -577,42 +579,228 @@ body, header {
 
 
 
-
+.proj_main_body {
+    margin-left: -20px;
+}
 
 .project-card-body {
     color: black;
     font-family: 'Poiret One', cursive;
 }
 
-.project-card-body h5 {
+.card-title {
     color: black;
     font-family: 'Poiret One', cursive;
-    font-size: 2em;
+    font-size: 3em;
     font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.card-text-1 {
+    padding: 0;
+    margin: 0;
 }
 
 .proj_form_container {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(50px);
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-sizing: border-box;
+    animation: fadeInUpProj 2.5s forwards;
+    margin-bottom: 20px; /* ƒобавл€ем отступ снизу дл€ каждого контейнера */
+}
+
+@keyframes fadeInUpProj {
+    to {
+        filter: blur(0);
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    background-color: transparent;
+    border: none;
+}
+
+.project-card-body {
+    padding: 20px; /* ƒобавл€ем внутренний отступ дл€ содержимого карточки */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.card-text-1 {
+    font-size: 2em;
+}
+.card-text-2 {
+    font-size: 1.5em;
+}
+
+.proj_main_body {
+    margin-left: 100px;
+}
+.btn.btn-primary.project-details-link {
+    background-color: rgb(108, 108, 165);
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+.project-details-body {
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+    .project-details-body::before {
+        overflow: auto;
+        content: '';
+        position: fixed;
+        top: -550%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgb(68, 68, 133), white);
+        animation: backgroundSlideInProj 2.3s forwards;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+@keyframes backgroundSlideInProj {
+    0% {
+        top: -100%;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+.project_details_container {
+
+}
+
+.top-half-project {
+    font-family: 'Poiret One';
     text-align: center;
     opacity: 0;
     filter: blur(10px);
     transform: translateY(50px);
-    max-width: 800px; 
+    animation: fadeInUp 2.5s forwards;
+    max-width: 800px;
     margin: 50px auto;
-    left: -120px;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 40px; 
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 40px;
     color: white;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
-    border-radius: 16px; 
-    box-sizing: border-box; 
-    animation: fadeInUpProj 2.5s forwards;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    box-sizing: border-box;
 }
 
-.project-card-body {
-    margin: 25px;
+.project-description {
+    font-family: 'Poiret One';
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(50px);
+    animation: fadeInUp 2.5s forwards;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
-@keyframes fadeInUpProj {
+.project-category {
+    font-family: 'Poiret One';
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(50px);
+    animation: fadeInUp 2.5s forwards;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.project-dates {
+    font-family: 'Poiret One';
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(50px);
+    animation: fadeInUp 2.5s forwards;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.proj_participants {
+    font-family: 'Poiret One';
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(50px);
+    animation: fadeInUp 2.5s forwards;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.proj_investors {
+    font-family: 'Poiret One';
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(50px);
+    animation: fadeInUp 2.5s forwards;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+@keyframes fadeInUp {
     to {
         filter: blur(0);
         opacity: 1;

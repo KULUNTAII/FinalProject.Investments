@@ -34,7 +34,7 @@ namespace FinalProject.Application.Services
 
             if (!_passwordManager.VerifyPassword(password, user.PasswordHash))
             {
-                throw new UnauthorizedAccessException("Invalid email or password");
+                throw new UnauthorizedAccessException("Invalid login or password");
             }
 
             var claims = new Claim[]
@@ -53,6 +53,7 @@ namespace FinalProject.Application.Services
 
         public async Task<User> GetCurrentLoggedInUser()
         {
+
             var userIdClaim = _httpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
 
             var userId = int.Parse(userIdClaim);

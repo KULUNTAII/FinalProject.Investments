@@ -43,6 +43,8 @@ public class ProjectService : IProjectService
         var project = mapper.Map<Project>(projectDto);
 
         var user = await authService.GetCurrentLoggedInUser();
+        //if (await projectRepository.AnyAsync(u => u.Name == project.Name))
+        //    throw new InvalidOperationException("Project with this name already exists.");
 
         user.Participant.Projects.Add(project);
 

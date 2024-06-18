@@ -4,10 +4,11 @@ using FinalProject.Application.Services.Interfaces;
 using FinalProject.Domain.Enums;
 using Microsoft.AspNetCore.Mvc;
 using FinalProject.Controllers;
+using FinalProject.Application.Services;
 
 namespace FinalProject.MVC.Controllers
 {
-    public class RegisterController(IUserService userService) : Controller
+    public class RegisterController(IUserService userService, IAuthService authService) : Controller
     {
         public ActionResult Register()
         {
@@ -27,6 +28,7 @@ namespace FinalProject.MVC.Controllers
                 dto.Investor = null;
             }
             await userService.CreateUserAsync(dto);
+            await authService.LoginWithHttpContext(dto.Login, dto.Password);
             return RedirectToAction("MainPage", "MainPage");
         }
 

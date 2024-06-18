@@ -4,7 +4,7 @@
     links.forEach(function (link) {
         link.addEventListener("click", function (event) {
             // Проверяем, что не нажата ссылка "My projects"
-            if (!link.id || link.id !== "myProjectsLink") {
+            if (!link.id || link.id !== "ProjectsLink") {
                 event.preventDefault();
 
                 // Добавляем анимацию затушевания для плавного перехода

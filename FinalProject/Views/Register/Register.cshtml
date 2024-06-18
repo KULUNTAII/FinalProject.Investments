@@ -4,7 +4,7 @@
 
 <div class="reg_body">
     <div class="reg_container">
-        <h1>TestRegistration</h1>
+        <h1>Registration</h1>
 
         <form asp-controller="Register" asp-action="RegisterForm" method="post" class="reg_form" id="registration-form">
             <div class="form_group">
@@ -65,7 +65,7 @@
                 <input class="form_control" type="text" placeholder="Fast learner, SMM specialist, professional dancer..." asp-for="Participant.Skills" />
 
                 <label>Links</label>
-                <input class="form_control" type="text" placeholder="Mary" asp-for="Participant.Links" />
+                <input class="form_control" type="text" placeholder="Enter links..." asp-for="Participant.Links" />
             </div>
 
             <button type="submit" class="reg_button" id="submit-button">Save</button>
