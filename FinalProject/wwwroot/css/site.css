@@ -18,17 +18,17 @@
     min-height: 100vh; 
 }
 
-.home_body::before {
-    content: '';
-    position: absolute;
-    top: -550%; 
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, rgb(68, 68, 133), white 100%);
-    animation: backgroundSlideIn 2.3s forwards;
-    z-index: -1; 
-}
+    .home_body::before {
+        content: '';
+        position: absolute;
+        top: -550%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgb(68, 68, 133), white 100%);
+        animation: backgroundSlideIn 2.3s forwards;
+        z-index: -1;
+    }
 
 @keyframes backgroundSlideIn {
     to {
@@ -92,7 +92,7 @@
 .home_text1 {
     margin-top: 10px;
     font-family: 'Poiret One', cursive; 
-    font-size: 2em
+    font-size: 2em;
     color: white; 
     opacity: 0; 
     animation: fadeInText 1s forwards 1.8s; 
@@ -749,6 +749,7 @@ img {
     margin-bottom: 20px;
 }
 
+
 .project-dates {
     font-family: 'Poiret One';
     opacity: 0;
@@ -799,6 +800,171 @@ img {
     box-sizing: border-box;
     margin-bottom: 20px;
 }
+
+@keyframes fadeInUp {
+    to {
+        filter: blur(0);
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.proj_budget {
+    font-family: 'Poiret One';
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(50px);
+    animation: fadeInUp 2.5s forwards;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+
+
+
+.profile_form_container {
+
+}
+
+.proj_body_profile {
+}
+.proj_body_profile {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+    .proj_body_profile::before {
+        content: '';
+        position: fixed;
+        top: -550%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgb(68, 68, 133), white);
+        animation: backgroundSlideInProj 2.3s forwards;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+@keyframes backgroundSlideInProj {
+    0% {
+        top: -100%;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+.proj_body_profile .card-title {
+    font-family: 'Poiret One';
+    text-align: center;
+    font-size: 36px;
+    color: white;
+    margin-bottom: 20px;
+    animation: fadeInUp 2.5s forwards;
+}
+
+.proj_body_profile .card-text {
+    font-family: 'Poiret One';
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    animation: fadeInUp 2.5s forwards;
+}
+
+.profile-card-text {
+    font-family: 'Poiret One';
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    animation: fadeInUp 2.5s forwards;
+}
+
+    .profile-card-text h5 {
+        font-size: 24px;
+        color: #ffd700;
+        margin-bottom: 10px;
+    }
+
+.profile_form_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Добавляем столбцовую ориентацию для элементов */
+    text-align: center; /* Центрируем текст внутри блока */
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(50px);
+    animation: fadeInUp 2.5s forwards;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    color: white;
+    border-radius: 16px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+    .profile_form_container:last-child {
+        margin-bottom: 0;
+    }
+
+.profile-card-body {
+    font-family: 'Poiret One';
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(50px);
+    animation: fadeInUp 2.5s forwards;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    color: white;
+    border-radius: 16px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+    .profile-card-body:last-child {
+        margin-bottom: 0;
+    }
+
+    .profile-card-body .profile-card-title {
+        font-size: 24px;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    .profile-card-body .profile-card-text {
+        font-size: 16px;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+        .profile-card-body .profile-card-text small {
+            font-size: 14px;
+            color: white;
+        }
+
+    .profile-card-body img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
 
 @keyframes fadeInUp {
     to {

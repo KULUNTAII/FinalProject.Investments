@@ -4,15 +4,23 @@
 <div class="project-details-body">
     <div class="project-details-container">
     <div class="top-half-project">
-    <h2 class="view_project_name">@Model.Name</h2>
-    <p class="view_project_prevdesc">@Model.PreviewDescription</p>
+    <h1 class="view_project_name">@Model.Name</h1>
+    <h3 class="view_project_prevdesc">@Model.PreviewDescription</h3>
     @if (!string.IsNullOrEmpty(Model.filePath))
     {
         <img class="view_project_img" src="~/uploads/@Model.filePath" style="max-width: 100%; border-radius: 10px;" />
     }
     </div>
     <div class="project-description">
-        <pre class="view_project_fulldesc">@Model.FullDescription</pre>
+            <h4 class="view_project_fulldesc">Description</h4>
+            @if (Model.FullDescription != null)
+            {
+                <pre class="view_project_fulldesc">@Model.FullDescription</pre>
+            }
+            else
+            {
+                <pre class="view_project_fulldesc">No description...</pre>
+            }
     </div>
     <style>
         pre { 
@@ -22,15 +30,17 @@
         }
     </style>
     <div class="project-category">
-        <p class="view_project_category">Category: @Model.Category</p>
+            <h4 class="view_project_category">Category:</h4>
+        <p class="view_project_category">@Model.Category</p>
     </div>
 
     <div class="project-dates">
-    <p class="view_project_crdate">Creation Date: @Model.CreationDate.ToString("dd/MM/yyyy")</p>
-
+            <h4 class="view_project_crdate">Creation Date:</h4>
+            <p class="view_project_crdate"> @Model.CreationDate.ToString("dd/MM/yyyy")</p>
+            <h4 class="view_project_deadline">Deadline:</h4>
     @if (Model.Deadline.HasValue)
     {
-        <p class="view_project_deadline">Deadline: @Model.Deadline.Value.ToString("dd/MM/yyyy")</p>
+        <p class="view_project_deadline">@Model.Deadline.Value.ToString("dd/MM/yyyy")</p>
     }
     else
     {
@@ -38,8 +48,8 @@
     }
     </div>
     <div class="proj_participants">
+            <h4 class="view_project_participants">Participants</h4>
     <p class="view_project_participants">
-        Participants:
         <ul>
             @foreach (var participant in Model.Participants)
             {
@@ -50,10 +60,10 @@
     </div>
 
     <div class="proj_investors">
+            <h4 class="view_project_investors">Investors</h4>
     @if (Model.Investors.Any())
 {
     <p class="view_project_investors">
-        Investors:
         <ul>
             @foreach (var investor in Model.Investors)
             {
@@ -68,4 +78,25 @@ else
 }
     </div>
 </div>
+
+    <div class="proj_budget">
+        <h4 class="view_project_teambudget">Team budget:</h4>
+        @if (Model.TeamsBudget != 0)
+        {
+            <p class="view_project_teambudget">$@Model.TeamsBudget</p>
+        }
+        else
+        {
+            <p class="view_project_teambudget">This project has no budget.</p>
+        }
+        <h4 class="view_project_reqbudget">Required budget:</h4>
+        @if (Model.RequiredBudget != 0)
+        {
+            <p class="view_project_teambudget">$@Model.RequiredBudget</p>
+        }
+        else
+        {
+            <p class="view_project_teambudget">Not specified.</p>
+        }
+    </div>
 </div>

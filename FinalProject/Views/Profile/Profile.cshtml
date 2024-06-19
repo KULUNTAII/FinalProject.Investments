@@ -1,0 +1,45 @@
+﻿@using FinalProject.Domain.Entities
+@model User
+
+
+<div class="col-md-4 mb-4 proj_body_profile">
+    <div class="profile_form_container">
+                <h5 class="card-title">@Model.Login</h5>
+                <p class="card-text">@Model.Role</p>
+                @if (Model.Participant != null)
+                {
+                    <p class="profile-card-text">@Model.Participant.Name</p>
+                    <p class="profile-card-text">@Model.Participant.LastName</p>
+                    <p class="profile-card-text">@Model.Participant.Skills</p>
+                    <p class="profile-card-text">@Model.Participant.Achievements</p>
+
+                    <h5 class="profile-card-text">Projects:</h5>
+                    @if (Model.Participant.Projects != null && Model.Participant.Projects.Any())
+                    {
+   
+                            @foreach (var project in Model.Participant.Projects)
+                            {
+                                        <div class="profile-card-body">
+                                            <h5 class="profile-card-text">@project.Name</h5>
+                                            <p class="profile-card-text">@project.PreviewDescription</p>
+                                            <p class="profile-card-text"><small class="text-muted">@project.Category</small></p>
+                                            @if (!string.IsNullOrEmpty(project.filePath))
+                                            {
+                                                <img src="~/uploads/@project.filePath" style="border-radius: 10px; margin-bottom: 10px;" class="img-fluid">
+                                            }
+                                            <p>Creation Date: @project.CreationDate.ToString("dd/MM/yyyy")</p>
+                                            <a asp-controller="MainPage" asp-action="ShowProjectsDetails" asp-route-projectId="@project.Id" class="btn btn-primary project-details-link">View Details</a>
+                                        </div>
+                            }
+                    }
+                    else
+                    {
+                        <p class="profile-card-text">No projects available.</p>
+                    }
+                }
+                else
+                {
+                    <p class="card-text">You are unauthorized.</p>
+                }
+    </div>  
+</div>
