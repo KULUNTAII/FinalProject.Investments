@@ -4,21 +4,19 @@
 
 <body class="login_body">
     <div class="login_container">
-<form asp-controller="Login" asp-action="LoginUser" method="post">
-    <div>
-        <div class="login_group">
-            <label asp-for="Login"></label>
-            <input asp-for="Login" required>
-            <span asp-validation-for="Login" class="text-danger"></span>
-        </div>
-        <div class="login_group">
-            <label asp-for="Password"></label>
-            <input type="password" asp-for="Password" type="password" required>
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-</form>
+        <form asp-controller="Login" asp-action="LoginUser" method="post">
+            <div>
+                <div class="login_group">
+                    <label asp-for="Login"></label>
+                    <input asp-for="Login" required>
+                </div>
+                <div class="login_group">
+                    <label asp-for="Password"></label>
+                    <input type="password" asp-for="Password" type="password" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Log in</button>
+        </form>
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

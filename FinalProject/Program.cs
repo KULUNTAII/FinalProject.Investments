@@ -16,7 +16,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddAuthentication()
     .AddCookie("Cookies", opts =>
     {
-        opts.ExpireTimeSpan = TimeSpan.FromMinutes(50);
+        opts.ExpireTimeSpan = TimeSpan.FromMinutes(100);
 
         opts.Events.OnRedirectToLogin = (context) =>
         {

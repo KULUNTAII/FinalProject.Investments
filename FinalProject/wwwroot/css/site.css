@@ -647,6 +647,7 @@ img {
 
 .proj_main_body {
     margin-left: 100px;
+    margin-top: 30px;
 }
 .btn.btn-primary.project-details-link {
     background-color: rgb(108, 108, 165);
@@ -869,7 +870,6 @@ img {
 
 .proj_body_profile .card-title {
     font-family: 'Poiret One';
-    text-align: center;
     font-size: 36px;
     color: white;
     margin-bottom: 20px;
@@ -878,7 +878,6 @@ img {
 
 .proj_body_profile .card-text {
     font-family: 'Poiret One';
-    text-align: center;
     font-size: 20px;
     color: white;
     animation: fadeInUp 2.5s forwards;
@@ -886,7 +885,6 @@ img {
 
 .profile-card-text {
     font-family: 'Poiret One';
-    text-align: center;
     font-size: 18px;
     color: white;
     animation: fadeInUp 2.5s forwards;
@@ -899,11 +897,6 @@ img {
     }
 
 .profile_form_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; /* Добавляем столбцовую ориентацию для элементов */
-    text-align: center; /* Центрируем текст внутри блока */
     opacity: 0;
     filter: blur(10px);
     transform: translateY(50px);
@@ -972,4 +965,8 @@ img {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.profile-card-body.true {
+    text-align: left;
 }

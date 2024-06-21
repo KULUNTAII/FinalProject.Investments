@@ -16,7 +16,7 @@
                placeholder="Tell people about you"
                asp-for="Investor.Description"
                required />
-         <label>Type</label>
+        <label>Type</label>
         <select class="form-control ml-2" asp-for="Investor.Type">
             <option value="">Select type</option>
             @foreach (var type in (List<string>)ViewBag.InvestorTypes)

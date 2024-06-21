@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.MVC.Controllers
 {
-    public class ProfileController(AppDbContext context, IAuthService authService) : Controller 
+    public class ProfileController(AppDbContext context, IAuthService authService) : Controller
     {
         public ActionResult Profile()
         {

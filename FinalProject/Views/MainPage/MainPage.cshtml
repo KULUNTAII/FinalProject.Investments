@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using FinalProject.Domain.Entities
+@using Microsoft.AspNetCore.Authorization
+
+@inject IAuthorizationService AuthorizationService
+
+<!DOCTYPE html>
+@model User
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -15,17 +21,20 @@
             <div class="col-md-3">
                 <ul class="list-group">
                     <li class="list-group-item"><a asp-controller="Profile" asp-action="ShowMyProfile">My profile</a></li>
-                    <li class="list-group-item"><a asp-controller="Project" asp-action="Project">Create new project</a></li>
+                    @if (User.Identity.IsAuthenticated && !User.IsInRole("Investor"))
+                    {
+                        <li class="list-group-item"><a asp-controller="Project" asp-action="Project">Create new project</a></li>
+                    }
                     @* <li class="list-group-item"><a id="ProjectsLink" href="#">projects</a></li> *@
-                    <li class="list-group-item"><a href="#">Creators</a></li>
-                    <li class="list-group-item"><a href="#">Investors</a></li>
-                    <li class="list-group-item"><a href="#">Settings</a></li>
+                    @* <li class="list-group-item"><a href="#">Creators</a></li> *@
+                    @* <li class="list-group-item"><a href="#">Investors</a></li> *@
+                    @* <li class="list-group-item" style="color: red"><a href="#">Log out</a></li> *@
                 </ul>
             </div>
         </div>
     </div>
-            <div id="projectsContainer">
-            </div>
+    <div id="projectsContainer">
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
@@ -47,7 +56,7 @@
                 e.preventDefault();
 
                 $.ajax({
-                    url: '@Url.Action("ShowProjects", "MainPage")', 
+                    url: '@Url.Action("ShowProjects", "MainPage")',
                     type: 'GET',
                     success: function (result) {
                         $('#projectsContainer').html(result);

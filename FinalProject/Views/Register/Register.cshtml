@@ -9,10 +9,10 @@
         <form asp-controller="Register" asp-action="RegisterForm" method="post" class="reg_form" id="registration-form">
             <div class="form_group">
                 <label>Login</label>
-                <input class="form_control" type="text" placeholder="spiderman3000" asp-for="Login" required />
+                <input class="form_control" type="text" placeholder="spiderman3000" maxlength="20" asp-for="Login" required />
 
                 <label>Password</label>
-                <input class="form_control" type="password" placeholder="Use secure and complex passwords." asp-for="Password" required />
+                <input class="form_control" type="password" placeholder="Use secure and complex passwords." maxlength="20" asp-for="Password" required />
 
                 <label>Role</label>
                 <select class="form_control" asp-for="Role" id="role-select" required>
@@ -31,7 +31,7 @@
                 <input class="form_control" type="text" placeholder="enter..." asp-for="Investor.Name" />
 
                 <label>Description</label>
-                <input class="form_control" type="text" placeholder="Tell people about you" asp-for="Investor.Description" />
+                <input class="form_control" type="text" placeholder="Tell people about you" maxlength="300" asp-for="Investor.Description" />
 
                 <label>Type</label>
                 <select class="form_control" asp-for="Investor.Type" id="investor-type-select">
@@ -47,16 +47,16 @@
             <div id="participant-form" class="additional_form" style="display: none;">
                 <h2>Participant Information</h2>
                 <label>Name</label>
-                <input class="form_control" type="text" placeholder="Mary" asp-for="Participant.Name" />
+                <input class="form_control" type="text" placeholder="Mary" asp-for="Participant.Name" maxlength="30" />
 
                 <label>Last name</label>
-                <input class="form_control" type="text" placeholder="Kreestmuz" asp-for="Participant.LastName" />
+                <input class="form_control" type="text" placeholder="Kreestmuz" asp-for="Participant.LastName" maxlength="30" />
 
                 <label>Bio</label>
-                <input class="form_control" type="text" placeholder="Tell something about yourself!" asp-for="Participant.Bio" />
+                <input class="form_control" type="text" placeholder="Tell something about yourself!" asp-for="Participant.Bio" maxlength="90" />
 
                 <label>Work experience</label>
-                <input class="form_control" type="text" placeholder="Example: Worked as [position] in the [company name]" asp-for="Participant.WorkExperience" />
+                <input class="form_control" type="text" placeholder="Example: Worked as [position] in the [company name]" asp-for="Participant.WorkExperience" maxlength="200" />
 
                 <label>Achievements</label>
                 <input class="form_control" type="text" placeholder="What are you most proud of?" asp-for="Participant.Achievements" />

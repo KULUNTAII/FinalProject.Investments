@@ -99,4 +99,23 @@ else
             <p class="view_project_teambudget">Not specified.</p>
         }
     </div>
+
+    <div class="proj_budget">
+        <h4 class="view_project_teambudget">Contacts:</h4>
+        @if (Model.Contacts != null)
+        {
+            <p class="view_project_teambudget">
+                <ul>
+                    @foreach (var contact in Model.Contacts)
+                    {
+                        <li>@contact</li>
+                    }
+                </ul>
+            </p>
+        }
+        @if (Model.Contacts == null)
+        {
+            <p class="view_project_teambudget">No contacts specified.</p>
+        }
+    </div>
 </div>
